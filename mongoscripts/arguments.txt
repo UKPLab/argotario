@@ -1,0 +1,136 @@
+t1	pro	Appeal to Emotion	Wie würden Sie sich fühlen, wenn ein Krieg in Deutschland ausbrechen würde und Sie kein Land als Flüchtling aufnehmen würde?
+t2	contra	Appeal to Emotion	Das wäre mega cool, ausser wenn Du selbst die ganze Nacht in dem ****** Laden verbringen musst, weil dein Boss es verlangt.
+t3	contra	Appeal to Emotion	Wer soll kostenlose öffentliche Verkehrsmittel denn finanzieren? Stellen Sie sich einen Busfahrer vor, der kostenlos fahren soll. Er wird selbst kein Geld haben, um sich etwas zum Essen zu kaufen und den ganzen Tag hunrig sein, und seine ganze Familie wird auch hungern, macht Sie das nicht traurig?
+t1	pro	Hasty Generalization	Ich kenne einen Flüchtling, der ist super nett! Ich kann nicht verstehen, was Leute gegen sie haben. Wenn sie alle herkommen, wird es hier mehr nette Leute geben.
+t2	contra	Ad Hominem	Du bist auch so einer, der denkt, er müsse nachts nicht schlafen? So wie du dir das vorstellst, funktioniert es nicht.
+t3	contra	No Fallacy	Wenn öffentliche Verkehrsmittel kostenlos wären, würden Menschen sie auch für kurze Wege nutzen, anstatt zu laufen. Menschen bewegen sich schon nicht genug und würden so noch mehr unter ihrem Bewegungsmangel leiden.
+t2	contra	Red Herring	In vielen Branchen werden Unmengen an Energie für einen lediglich geringen bis mittleren Absatz verbraucht.
+t3	pro	No Fallacy	Mit kostenlosen öffentlichen Verkehrsmittel kann die Anzahl der PKWs auf den Straßen und somit auch der Schadstoffausstoß reduziert werden.
+t4	contra	No Fallacy	Wenn jedem ein bedingungsloses Grundeinkommen zusteht, ist der Anreiz Leistung zu erbringen vermindert. Die Grundbedürfnisse sind durch das Grundeinkommen abgedeckt. Auch im Alter ist man versorgt. Warum soll man überhaupt noch arbeiten gehen?
+t5	contra	No Fallacy	Eine Beurteilung der Schüler muss in irgendeiner Form stattfinden. Die Benotung ist für mich eine eindeutige Form der Beurteilung. Die Beurteilung in Textform kann u.U. missverständlich abgefasst sein oder zu schwammig. Schule ganz ohne Beurteilung würde den Ehrgeiz der Schüler nicht mehr anstacheln.
+t6	contra	No Fallacy	Die Legalisierung von Cannabis würde die Hemmschwelle, Cannabis zu konsumieren, stark senken. Das ist besonders im Hinblick auf Kinder und Jugendliche zu vermeiden. Außerdem gilt Cannabis als Einstiegsdroge für härtere Drogen, die sofort abhängig machen.
+t27	contra	Red Herring	Wer hat denn heutzutage noch die Zeit, ein ganzes Buch zu lesen? Man muss doch auch irgendwann Geld verdienen, wenn die Mietpreise immer weiter steigen.
+t1	pro	No Fallacy	Deutschland ist ein reiches Land und deshalb in der Verantwortung, wenn Menschen in Not sind.
+t2	pro	No Fallacy	Das ist eine super Idee, dann kann man rund um die Uhr einkaufen.
+t3	pro	No Fallacy	Öffentliche Verkehrsmittel werden heute ohnehin schon stark vom Staat subventioniert, dann kann man sie auch gleich komplett kostenlos machen.
+t4	pro	No Fallacy	In Zukunft werden viele Arbeitskräfte durch Roboter ersetzt und fast alle Menschen werden arbeitslos. Deshalb brauchen wir ein Grundeinkommen.
+t5	pro	No Fallacy	Konstruktives Feedback ist besser als Noten.
+t6	pro	No Fallacy	Alkohol ist viel schädlicher als Cannabis und trotzdem legal. Deshalb sollte man auch Cannabis legalisieren.
+t7	pro	Appeal to Emotion	Die Wissenschaft sollte nicht dazu beitragen, Menschen niederzumetzeln!
+t8	pro	No Fallacy	In einer alternden Gesellschaft wie der deutschen muss man der Jugend mehr politisches Gewicht geben.
+t9	pro	No Fallacy	Europa braucht die Türkei als Partner, da müssen wir bei manchen Themen auch ein bisschen entgegenkommen.
+t10	pro	No Fallacy	Gentechnik kann dazu beitragen, den Welthunger zu bekämpfen.
+t11	pro	No Fallacy	Die ganzen Terroranschläge in den letzten Jahren haben gezeigt, dass wir mehr Sicherheit brauchen.
+t12	pro	No Fallacy	Der Staat muss die ungleichen Startchancen von Kindern wenigstens ein bisschen ausgleichen. Da ist eine hohe Erbschaftssteuer ein erster Schritt.
+t13	pro	Appeal to Emotion	Die sind ja sonst alle faul und lassen sich das Leben von den anderen finanzieren...
+t14	pro	No Fallacy	Alles andere wäre Diskriminierung aufgrund der sexuellen Orientierung.
+t15	pro	No Fallacy	Tiere sind Lebewesen, die darf man nicht einfach essen.
+t16	pro	No Fallacy	Man hat ja bei der NSU-Affäre gesehen, dass dieser Verein nichts taugt.
+t17	pro	No Fallacy	Der Euro ist für Deutschland eine zu schwache Währung und für die südlichen Länder eine zu starke. Das kann nicht funktionieren.
+t18	pro	No Fallacy	Religion ist Privatsache und gehört nicht in die Schule!
+t19	pro	No Fallacy	Das würde dazu führen, dass sie sich mehr als Teil der Gemeinschaft fühlen.
+t20	pro	No Fallacy	Das ist eine gute Idee, dann lernt die Jugend von heute endlich mal wieder Disziplin und Ordnung.
+t21	pro	Appeal to Emotion	Wir vergessen einfach viel zu oft, das wir nur diesen einen Planeten haben.
+t22	pro	Hasty Generalization	Schauen Sie sich Frankreich an! Deutschland steht nur wegen der Agenda so gut da.
+t23	pro	No Fallacy	Die Umweltverschmutzung durch Plastikmüll ist unerträglich. Selbst auf dem Meeresgrund ist alles voll davon!
+t24	pro	Appeal to Emotion	Sonst denken die alle, sie können hier machen, was sie wollen!
+t25	pro	No Fallacy	Die ganzen Kontrollen sind viel zu aufwändig und die meisten Doper erwischt man gar nicht.
+t26	pro	No Fallacy	Das bringt Wachstum und Arbeisplätze.
+t27	pro	Irrelevant Authority	Mein Lehrer hat mir damals beigebracht: Lesen macht intelligent, Filme schauen macht dumm! Da ist was wahres dran.
+t28	pro	Appeal to Emotion	Stellen Sie sich vor, es gäbe keine Orchester und Konzerte mehr. Das wäre doch schade!
+t29	pro	No Fallacy	Wenn wir dem Terror ein Ende setzen wollen, dann kommen wir da nicht drum herum.
+t30	pro	No Fallacy	In der heutigen Zeit kann man das nicht früh genug lernen. Was Hänschen nicht lernt, lernt Hans nimmermehr.
+t1	contra	No Fallacy	Deutschland wird Probleme haben, all diese Menschen zu integrieren.
+t2	contra	Appeal to Emotion	Verkäufer wollen auch mal schlafen. Wollen Sie sich nachts in den Laden stellen?
+t3	contra	Hasty Generalization	Wenn etwas kostenlos ist, dann sinkt die Wertschätzung dafür. Das sieht man ja auch bei den öffentlichen Toiletten, wie die aussehen!
+t4	contra	Ad Hominem	Sie sind doch nur für das Grundeinkommen, weil Sie zu faul sind zu arbeiten!
+t5	contra	No Fallacy	Wenn man die Noten abschafft, dann würde sich ja niemand mehr anstrengen.
+t6	contra	Ad Hominem	Das wollen Sie doch nur, weil Sie jetzt schon süchtig nach diesem Zeug sind, das sieht man Ihnen an!
+t7	contra	No Fallacy	Viele moderne Errungenschaften sind durch militärische Forschung entstanden, z.B. das Internet.
+t8	contra	Hasty Generalization	Naja, wenn ich da an meine Neffen denke… die jungen Leute sind doch alle total desinteressiert und haben überhaupt keine Ahnung von Politik!
+t9	contra	No Fallacy	Erdoganistan tritt die Menschenrechte mit Füßen, die haben in der EU nichts, aber auch gar nichts verloren!
+t10	contra	No Fallacy	Der Mensch sollte nicht in Gottes Schöpfung eingreifen!
+t11	contra	Appeal to Emotion	Videokameras sind nur der erste Schritt zum gläsernen Bürger. Am Ende werden wir alle pausenlos überwacht und keiner wundert sich mehr darüber.
+t12	contra	No Fallacy	Eine Erbschaftssteuer ist nicht gerecht. Das Geld wurde doch bereits einmal besteuert, als es erwirtschaftet wurde. Dann muss man es hinterher nicht noch einmal besteuern.
+t13	contra	No Fallacy	Hartz-IV ist schon das Existenzminimum, das darf man nicht wegnehmen, denn das verstößt gegen die Menschenrechte.
+t14	contra	No Fallacy	Das Kindeswohl muss an erster Stelle stehen. Kinder brauchen einen Vater und eine Mutter.
+t15	contra	No Fallacy	Bei einer veganen Ernährung fehlen einem wichtige Vitamine.
+t16	contra	No Fallacy	Der Verfassungsschutz muss bleiben, damit man extremistische Bewegungen beobachten kann.
+t17	contra	Appeal to Emotion	Scheitert der Euro, dann scheitert Europa!
+t18	contra	No Fallacy	Religion ist auch ein Teil unserer Kultur, und Schüler sollten darüber Bescheid wissen.
+t19	contra	No Fallacy	Zuwanderer sollten existierende Kräfteverhältnisse nicht durcheinander bringen dürfen.
+t20	contra	No Fallacy	Gott sei Dank sind die Zeiten vorbei, dass die Jugend strammsteht und durch den Schlamm robbt, anstatt etwas Sinnvolles mit ihrer Zeit anzufangen!
+t21	contra	Red Herring	Das Klima hat sich schon immer verändert und wird das auch weiterhin tun, egal, was der Mensch macht.
+t22	contra	No Fallacy	Die Agenda 2010 hat viel Ungerechtigkeit und Armut in Deutschland erzeugt!
+t23	contra	Red Herring	Die Politik sollte nicht andauernd versuchen, ihre Bürger zu erziehen. Wähler sind erwachsene Menschen!
+t24	contra	No Fallacy	Wenn man da konsequent ist, dann steigert das die Anerkennung derjenigen, die sich integrieren und nicht kriminell sind.
+t25	contra	No Fallacy	Doping ist extrem gefährlich für die Gesundheit der Sportler, eine Legalisierung wäre unverantwortlich!
+t26	contra	Appeal to Emotion	Die Olympischen Spiele sind eine korrupte und dopingverseuchte Massenverantstaltung. So etwas wollen wir hier nicht!
+t27	contra	No Fallacy	Wer liest denn heute noch Bücher? Filme sind die Bücher unserer Zeit!
+t28	contra	Appeal to Emotion	Das interessiert doch ohnehin nur eine kleine Elite, die sollen ihren Genuss selbst finanzieren.
+t29	contra	Hasty Generalization	Ich bin dagegen. Gewalt erzeugt immer Gegengewalt.
+t30	contra	Appeal to Emotion	Ganz im Gegenteil! Diese ganzen Geräte verdummen die Jugend. Man sollte das in Schulen konsequent verbieten!
+t20	pro	Ad Hominem	Es werden nur noch Schwächlinge herangezogen. Ein bisschen Zeit beim Militär hätte dir auch ganz gut getan!
+t10	pro	Appeal to Emotion	Mit gentechnisch manipulierten Lebensmitteln kann ein so großer Ertrag erziehlt werden, dass der Welthunger damit besiegt wird! Niemand muss mehr sterben!
+t27	pro	Ad Hominem	Was willst du denn mit deinen Filmen? Die Menschheit hängt heute nur noch vor der Glotze und verblödet doch an den ganzen Filmen. Du bist doch das beste Beispiel dafür!
+t20	contra	Red Herring	Wozu die Wehrpflicht nach knapp sechs Jahren wieder einführen? Das kostet doch auch nur wieder Geld und bei den vielen Problemen mit der kaputten Ausrüstung... Haben wir derzeit nicht genügend andere und dringendere Probleme in unserem Land zu lösen?
+t10	contra	Appeal to Emotion	Genmanipulierte Lebensmittel sind schädlich für die Gesundheit. Daran können Tiere und Menschen sterben!
+t21	pro	Appeal to Emotion	Die armen Holländer werden sonst bald überschwemmt!
+t26	contra	Red Herring	Sport ist ja nicht so mein Ding, aber die Schacholympiade könnte ich mir vorstellen.
+t28	pro	Ad Hominem	Wenn Sie Klassik nicht mögen, dann zeigt das, dass Sie nicht gebildet sind.
+t21	pro	Red Herring	Und die Amis mit ihren Autos verbrauchen so viel Benzin.
+t26	contra	Hasty Generalization	In Brasilien war das richtig schlecht für die armen Leute, so wird das überall sein, auch hier.
+t28	contra	No Fallacy	Ist nicht jede Musik gleichwertig, warum werden dann andere Stile nicht gefördert?
+t21	pro	Ad Hominem	Jeder Mensch trägt indirekt oder direkt zum Klimawandel bei. Auch Sie! Daher sollte auch Ihnen bewusst sein, dass Sie Verantwortung tragen!
+t28	contra	Red Herring	Gibt es keine sinnvollere Vewendung für diese Gelder?
+t21	pro	Red Herring	Klimaskeptiker sind Trumpversteher.
+t26	contra	Hasty Generalization	Schauen Sie sich die Spiele von Sotschi an, viel zu teuer und viel zu große Umweltschäden und nach den Spielen verrotten die Spielstätten ungenutzt.
+t28	pro	Irrelevant Authority	Wie bereits Victor Hugo sagte, drückt die Musik das aus, was nicht gesagt werden kann und worüber zu schweigen unmöglich ist. Sie ist also Teil des öffentlichen Interesses.
+t21	pro	Red Herring	Volkswagen sollte man dicht machen, weil sie umweltschädliche Autos bauen.
+t26	pro	Irrelevant Authority	Ich bin dafür, weil ich finde, dass wir alle sehr sportbegeistert sind.
+t28	contra	Red Herring	Die Dirigenten kriegen viel zu viel Geld für das bisschen Ärmchenschwingen.
+t21	contra	Red Herring	Es bringt keinen Nutzen, wenn nur seitens Deutschland darauf geachtet wird und der Rest der Welt schaut weg.
+t26	pro	No Fallacy	Hierdurch können sich die Städte präsentieren und für sich werben.
+t28	contra	No Fallacy	Warum sollte gerade klassische Musik gefördert werden? Hier zieht meiner Meinung nach das Gleichheitsprinzip.
+t1	pro	No Fallacy	Flüchtlinge sind eine Bereicherung für die Gesellschaft und man kann nicht ausschließlich darauf verweisen, dass Deutschland von Terroristen unterwandert wird.
+t2	contra	No Fallacy	Sowohl die Konsumenten wie auch die Mitarbeiter in den Geschäften müssen mal zur Ruhe kommen.
+t3	pro	No Fallacy	Dann würden vielleicht mehr Menschen vom Auto auf den ÖPNV umstellen.
+t1	contra	Red Herring	Deutschland kann nicht die ganze Welt retten.
+t2	pro	No Fallacy	In anderen Ländern ist das längst der Fall.
+t3	contra	No Fallacy	Wer soll das denn bezahlen?
+t1	pro	Ad Hominem	Sie sind fremdenfeindlich und menschenverachtend! Wir soll denn diesen von Krieg und Vertreibung völlig verstörten Menschen helfen, wenn nicht wir? Zum Glück ist nicht jeder so kaltherzig wie Sie!
+t2	pro	Hasty Generalization	Ich muss in Schicht arbeiten. Manchmal komme ich erst um Mitternacht aus der Fabrik. Wie soll ich mir da noch etwas zu essen kaufen können, wenn alle Geschäfte schon geschlossen sind?
+t3	pro	Appeal to Emotion	Wir müssen einfach mehr für unsere schöne Natur tun. Denken Sie doch an die verschmutzte Luft durch die vielen Autos. Immer mehr Menschen werden krank. Das lässt doch niemand kalt!
+t25	contra	Red Herring	Dopen ist doch total unfair. Der ehrliche Sportler müht sich ab und kommt doch auf keinen Grünen Zweig. Der Unehrliche hat seinen Vorteil und nützt ihn gnadenlos.
+t22	pro	Ad Hominem	Uns geht es doch allen gut. Wer hier jammert, tut das auf hohem Niveau. Und meistens kommt ja auch nichts Besseres nach.
+t24	pro	Appeal to Emotion	Der Straftäter hat sein Aufenthaltsrecht automatisch verwirkt. Warum soll man ihn hier auf Kosten des Steuerzahlers weiter durchfüttern? Wer sich nicht an die Regeln hält muss gehen.
+t25	contra	Appeal to Emotion	Damit würde man den Betrügern Tür und Tor öffnen!
+t24	pro	Appeal to Emotion	Wer unsere Hilfe schamlos ausnutzt, hat sein Schutzbedürfnis hier verwirkt.
+t22	pro	Red Herring	Schröder hat viel Mist gemacht, aber da lag er mal richtig.
+t25	contra	Red Herring	Da ab Donnerstag schönes Wetter weden soll, werde ich mal wieder selbst aufs Rad steigen.
+t24	pro	Hasty Generalization	Ja auf jeden Fall, siehe Köln, alle in Deutschland haben gesehen was sonst passieren kann.
+t22	contra	Ad Hominem	Wer sowas behauptet hat keine Ahnung von Politik und sieht das Elend auf der Straße nicht.
+t18	pro	No Fallacy	Die Stundenpläne unserer Kinder sind ohnehin schon überfüllt. Die Zeit sollte für Sinnvolles verwendet werden, also vor allem Mathematik und Naturwissenschaften.
+t30	pro	Hasty Generalization	Eine gute Freundin von mir hat ihren beiden Kindern Smartphones verweigert und die Computernutzung streng kontrolliert. Nun kommt die Tochter beim Berufseinstieg überhaupt nicht klar, aber der Sohn, ein guter Freund von unserem Sohn, hat sich heimlich selbst alles beigebracht. Und jetzt ist er Ingenieur und verdient mit Mitte 20 mehr als seine Mutter!
+t7	pro	Irrelevant Authority	Sogar unser Finanzminister, der sonst streng auf Sparsamkeit achtet, will mehr Geld für Militärausgaben bereitstellen.
+t7	pro	Red Herring	Es ist ganz wichtig, dass Deutschland endlich mehr militärische Verantwortung übernimmt.
+t18	pro	Ad Hominem	Du bist doch gar nicht in der Lage, die Auswirkungen auf deine Kinder zu überblicken, wenn sie schon in der Schule womöglich radikalisierte Christen werden.
+t30	contra	Appeal to Emotion	Die armen, kleinen Kinder werden vernachlässigt, sind einsam und allein. An Computern oder Smartphones sitzend, spüren sie keine soziale Wärme mehr.
+t7	contra	Appeal to Emotion	Krieg, militärische Zwecke, bedeutet Krieg und Du hast Krieg doch noch nie erlebt, also solltest Du doch bitte auch nicht zulassen, das weitere, womöglich biologische Waffen entwickelt werden. Krieg bedeutet Leid und Zerstörung willst Du das?
+t18	pro	Hasty Generalization	Der Amoklauf von Anders Breivik hätte möglicherweise verhindert werden können, wenn er nicht durch die religiöse Indoktrination in seiner Schule angestachelt worden wäre.
+t30	contra	Appeal to Emotion	Heranwachsende heutiger Tage verbringen mehr Zeit in seelenlose Gerätschaften zu starren als geliebte Personen die Aufmerksamkeit zu schenken, die sie verdienen. Finden Sie nicht auch, dass Maßnahmen getroffen werden müssen, um unser kostbarstes Gut vor digitaler Abhängigkeit zu bewahren? Denken Sie an die Kinder!
+t7	pro	Red Herring	Hochschulen wird schon seit fast einem Jahrhundert eine tragende Rolle in der militärischen Forschung zugestanden. Ohne diese Bemühungen wäre einer potentiellen Invasion von russischen Aggressoren kaum etwas entgegenzusetzen, weshalb die Forderung nach einer Truppenverstärkung in den östlichen NATO-Staaten mehr als gerechtfertigt erscheint.
+t11	contra	No Fallacy	Es verstößt schlichtweg gegen die Persönlichkeitsrechte, wenn es im öffentlichen Raum mehr Videoüberwachung gibt.
+t12	pro	No Fallacy	Die Erbschaftssteuer sollte ab einem bestimmten Vermögenswert erhöht werden; jedoch sollten Familienunternehmen als solche davon ausgenommen werden.
+t16	contra	Appeal to Emotion	Was wären in Deutschland wohl schon für schreckliche und blutige Attentate und Terrorakte verübt worden, wenn es den Verfassungsschutz nicht gegeben hätte?
+t11	contra	Ad Hominem	Sie sind ein Stalker. Sie wollen lediglich eine Totalüberwachung aller Menschen, um Ihren inneren Durst des Voyeurs zu stillen.
+t12	contra	Appeal to Emotion	Das ist ja wohl keine Alternative, Menschen, die ohnehin kaum finanzielle Mittel haben, auch noch ein bereits durch den Vorgänger versteuertes Erbe nochmals mit hohen Steuern zu belasten. Man erbt ein Haus und muss dafür Geld zahlen, das man nicht hat und ist schon wieder gezwungen das Haus zu einem Spottpreis, im Zweifel durch Zwangsversteigerung, zu verkaufen, nur um dann die Erbschaftsteuer zu zahlen und am Ende bleibt nichts mehr übrig. Super System, um den kleinen Mann noch ärmer zu machen.
+t16	contra	Ad Hominem	Sie wollen wohl gleich wieder wie ein Höhlenmensch leben und das Chaos verbreiten. Was glauben Sie wie es hier zugeht, wenn der Verfassungsschutz abgeschafft wird. Chaos wie bei Ihnen zuhause, wo jeder macht was er will, das scheint Ihnen ein besonderes Anliegen zu sein.
+t12	contra	Appeal to Emotion	Die Leute müssen eh schon zusehen, wie sie über die Runden kommen. Und nach einem Trauerfall noch Geld vom Verbliebenen abzuknipsen, ist höchst unmoralisch.
+t17	contra	Irrelevant Authority	Nur weil die Rechtspopulisten den Euro abschaffen wollen, heißt das nicht, dass wir das machen sollten.
+t14	pro	Hasty Generalization	Mein Onkel ist schwul und der kann super mit Kindern.
+t17	contra	Red Herring	Sie wollen nur ablenken, damit das Volk das eigendliche Problem, nämlich die Unfähigkeit der Regierung, nicht erkennt.
+t15	contra	Ad Hominem	Schauen Sie sich mal an, sie alter Veganer! Nur Haut und Knochen, nix dran an Ihnen. So möchte ich nicht werden! Her mit dem Steak!
+t17	contra	Red Herring	Nicht der Euro ist das Problem, sondern die Politiker, die keine Probleme lösen, sondern sie schaffen. Anstatt zusammen zu arbeiten, arbeitet jeder gegen jeden und das in einer Zeit, wo Zusammenhalt gefragt ist. Flüchtlinge aufnehmen, ja, nein. Finanzielle Unterstützung zugunsten nicht wirtschaftlich arbeitender Länder wie Griechenland, die auch trotz ihrer erheblichen politischen Defizite die Schuld bei anderen suchen. Das sind die Probleme, um die man sich kümmern sollte und nicht um eine Währung.
+t14	contra	Appeal to Emotion	Mehr Akzeptanz für Homosexuelle ist natürlich gewünscht aber bitte denken Sie an die Kinder, wie diese sich dabei fühlen. Sie werden täglich mit diesem Thema konfrontiert und höchstwahrscheinlich bei anderen Kindern und Eltern gemieden und gehänselt. Dies stellt für Kinder keine gute Umgebung dar, sodass sie möglicherweise selbst eine Haltung gegen Homosexuelle einnehmen könnten.
+t15	contra	Ad Hominem	Sie sind auch ein Feind der Natur was? Es liegt in der Natur des Menschen und auch jedes einzelnen Tieres andere Tiere als Nahrung zu sehen. Wollen Sie einem Hai, Wolf oder Löwen erzählen, er soll sich vegan ernähren? Hören Sie auf Ihre verkorkste Sichtweise anderen aufzuzwingen. Glauben Sie die Evolution, davon mag ich bei Ihnen allerdings in der Tat nicht sprechen, soweit vorgedrungen, wenn sich der Mensch früher nicht von Tieren ernährt hätte? Aber picken Sie ruhig weiter Ihre Körner und spielen Sie ruhig gegen die Natur.

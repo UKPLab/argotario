@@ -1,0 +1,9 @@
+*.iml
+*.ipr
+*.iws
+/.idea
+.DS_Store
+arguegame/www/bin/*
+mongodb
+arguegame/platforms/
+doc/html
