@@ -31,4 +31,4 @@ Don't hesitate to send us an e-mail or report an issue, if something is broken (
 > This repository contains experimental software and is published for the sole purpose of giving additional background details on the respective publication. 
 
 
-Developer documentation is available in doc/devel.adoc and doc/faq.doc
+Developer documentation is available in [./doc/devel.adoc] and [./doc/faq.doc]
