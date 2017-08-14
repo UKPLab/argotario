@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <!-- Config file -->
+    <script src="config-device-prod.js"></script><!-- Will work on devices -->
+    <script src="../config-web-prod.js"></script><!-- Will fail on devices, on only work on the web app -->
+    <script src="./.dev/config-web-dev.js"></script><!-- Will overwrite previous configs only locally -->
+
+    <!--<base href="/" />-->
+
+    <title>Argotario!</title>
+    <link rel="apple-touch-icon" href="Resources/Images/AppIcon.png">
+    <link rel="apple-touch-icon" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-60@2x.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-60@3x.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-76@2x.png" />
+    <link rel="apple-touch-icon" sizes="58x58" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-Small@2x.png" />
+
+    <!-- CSS -->
+
+    <!-- compiled css output -->
+    <link rel="stylesheet" href="CSS/ionic-custom.css" />
+
+    <!-- Vendor libraries BEFORE loading other -->
+    <script src="src/Vendor/_jquery-2.1.1.min.js"></script>
+    <script src="src/Vendor/baasbox-0.8.3.js"></script>
+    <!--<script src="src/Vendor/jqueryui/jquery-ui.min.js"></script>-->
+    <script src="src/Vendor/jquery-canvas-sparkles.js"></script>
+    <!--<script src="src/Vendor/baasbox-0.8.3.min.js"></script>-->
+    <script src="src/Vendor/ArcAnimation.js"></script>
+
+
+	<!-- Libraries -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <!--<script src="src/Vendor/angular-classy/angular-classy.min.js"></script>-->
+    <link href="CSS/style.css" rel="stylesheet" t>
+    <link href="CSS/ArgIonic.css" rel="stylesheet" t>
+
+    <!-- Vendor libraries AFTER loading other -->
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <link href="CSS/animate.css" rel="stylesheet">
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ng-cordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="src/App/app.js"></script>
+
+    <!-- Controllers -->
+    <script src="src/App/Controllers/RootController.js"></script>
+    <script src="src/App/Controllers/WorldController.js"></script>
+    <script src="src/App/Controllers/ProfileController.js"></script>
+    <script src="src/App/Controllers/IntroductionController.js"></script>
+    <script src="src/App/Controllers/LevelController.js"></script>
+    <script src="src/App/Controllers/BrowserController.js"></script>
+    <script src="src/App/Controllers/AuthenticationController.js"></script>
+    <script src="src/App/Controllers/RegistrationController.js"></script>
+    <script src="src/App/Controllers/RoundController.js"></script>
+    <script src="src/App/Controllers/AccountController.js"></script>
+    <script src="src/App/Controllers/UserProgressController.js"></script>
+    <script src="src/App/Controllers/HighscoreController.js"></script>
+    <script src="src/App/Controllers/ForeignProfileController.js"></script>
+    <script src="src/App/Controllers/UserProfileController.js"></script>
+    <script src="src/App/Controllers/FeedbackController.js"></script>
+    <script src="src/App/Controllers/ChooseUserController.js"></script>
+    <script src="src/App/Controllers/ImprovedRankingController.js"></script>
+    <script src="src/App/Controllers/GameProgressWithoutRegistrationController.js"></script>
+    <script src="src/App/Controllers/ChooseAvatarController.js"></script>
+    <script src="src/App/Controllers/AuthenticationFormController.js"></script>
+    <script src="src/App/Controllers/RegistrationFormController.js"></script>
+
+    <!-- (Custom) Levels -->
+    <script src="src/App/GameControllers/NonskippableLevelController.js"></script>
+
+    <!-- Rounds -->
+    <script src="src/App/GameControllers/StaticContentController.js"></script>
+    <script src="src/App/GameControllers/StanceRecognitionController.js"></script>
+    <script src="src/App/GameControllers/PickTheComponentController.js"></script>
+    <script src="src/App/GameControllers/ComposeArgumentController.js"></script>
+
+    <!-- Shared files: lib -->
+    <link href="CSS/ArgDirectives.css" rel="stylesheet">
+    <script src="src/App/lib/Directives/errSrc.js"></script>
+    <script src="src/App/lib/Directives/Debug.js"></script>
+    <script src="src/App/lib/Directives/ArgDirectives.js"></script>
+    <script src="src/App/lib/ng-storage.js"></script>
+    <script src="src/App/lib/ArgLib.js"></script>
+
+    <!-- Shared files: Services -->
+    <script src="src/App/lib/Services/GameWorldStore.js"></script>
+    <script src="src/App/lib/Services/UserStore.js"></script>
+    <script src="src/App/lib/Services/ArgumentStore.js"></script>
+    <script src="src/App/lib/Services/UserAccount.js"></script>
+    <script src="src/App/lib/Services/HighscoreStore.js"></script>
+    <script src="src/App/lib/Services/IonicCustomModal.js"></script>
+    <script src="src/App/lib/Services/DomainStore.js"></script>
+    <script src="src/App/lib/Services/TopicStore.js"></script>
+    <script src="src/App/lib/Services/ArticleStore.js"></script>
+    <script src="src/App/lib/Services/EntityLinker.js"></script>
+	<script src="src/App/lib/Services/EventStore.js"></script>
+	<script src="src/App/lib/Services/SoundStore.js"></script>
+    <script src="src/App/lib/BaasBoxAdditions.js"></script>
+
+    <!-- Shared files: Vendor -->
+    <script src="src/Vendor/RHUtility.js"></script>
+
+    <style media="screen">
+        [ng-app="app"] {
+            /*width: 320px;
+            height: 480px;
+            position: relative;*/
+        }
+    </style>
+  </head>
+    <body>
+        <noscript>No JS?</noscript>
+        <div id="app-wrapper" ng-app="app" ng-include="'Views/RootView.html'">
+        </div>
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<style media="screen">
+#arg-session-description {
+    display: block;
+    position: relative;
+    margin: 10px auto;
+    color: #888;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 100%;
+}
+
+#arg-session-description .topic {
+    font-size:20px;
+    text-align: center;
+    border-top: 0px;
+}
+
+#arg-session-description .fallacy {
+    text-align: left;
+    border-top: 0px;
+    font-size: 15px;
+}
+
+#excuse-session-judge {
+    display: table;
+    max-width: 400px;
+    margin: 10px auto;
+
+}
+
+#excuse-session-judge p{
+    display: table-cell;
+    color:black;
+    max-width: 50%;
+    float: right;
+    margin:15px;
+    font-size:18px;
+    border: 2px solid red;
+    padding:10px;
+    border-radius: 5px;
+}
+
+#excuse-session-judge img{
+    display: table-cell;
+    width: 25%;
+    float: left;
+}
+
+.highlighted-fallacy {
+    border-radius: 5px;
+    background-color: lightgrey;
+    background-image: none;
+    border: 4px solid;
+    border-color: grey;
+}
+</style>
+
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="prepareHasFinished">
+    <arg-round-head ng-if="gameData.session">
+        <arg-round-title>
+            Judge Time
+            <i class="ion-compass item-choose-avatar"></i>
+        </arg-round-title>
+        <arg-round-explanation>
+            {{'TELL_US_WHO_HAS_WON'|translate}}<br>
+            <strong>{{'MARK_ALL_ARGUMENTS'|translate}}</strong>
+        </arg-round-explanation>
+
+    <div class="card" id="arg-session-description">
+        <div class="domain item item-divider item-icon-left"><i class="icon {{gameData.domain.icon}}"></i>
+            <h2>{{ gameData.domain.title.en }} <span ng-if="gameData.rounds!=null" class="right incomplete" ng-class="{'complete': gameData.args.length==progress()}"> {{'MARKED'|translate}}: {{progress()}} / {{gameData.args.length}} </span></h2>
+        </div>
+        <div ng-if="gameData.fallacy" class="fallacy item item-text-wrap" ng-click="nextFallacy()"><i class="icon {{gameData.fallacy.icon}}"></i> {{ gameData.fallacy.title.en }} <i class="icon ion-refresh"></i></div>
+        <div ng-if="gameData.stance" class="item item-text-wrap arg-session-stance-{{gameData.stance}}">
+          {{'YOUR_POSITION'|translate}}: {{gameData.stance}}
+        </div>
+        <div class="topic item item-text-wrap">&ldquo;{{ gameData.topic.title }}&rdquo;</div>
+    </div>
+
+    </arg-round-head>
+
+    <div ng-if="gameData.session" ng-repeat="arg in gameData.args" class="list">
+        <div ng-if="arg.indicator" class="item item-divider">
+            <p>{{'YOUR_TIP'|translate}}: <i class="icon {{arg.indicator.icon}}"></i> {{arg.indicator.title.en}}</p>
+
+        </div>
+        <arg-argument model="arg" fallacy="arg.fallacy" on-argument-tap="onArgumentTap(id,event)" judge="true" class="arg-argument-centered arg-neutral"></arg-argument>
+    </div>
+
+</div>

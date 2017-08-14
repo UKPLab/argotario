@@ -1,0 +1,59 @@
+<ion-modal-view ng-controller="LevelController" ng-init="registerLevel(this)" ng-cloak>
+
+<!-- Quit, Skip and Progress -->
+<ion-header-bar>
+	<button class="button button-clear button-positive" ng-click="clickQuitLevel();">{{'QUIT'|translate}}</button>
+
+	<arg-level-progress-indicator number-of-rounds="numberOfRounds()"
+	 							  number-of-completed-rounds="currentRoundIndex()"
+								  current-points="currentPoints"
+								  currency="currency"
+								  ng-click="openAccount()"></arg-level-progress-indicator>
+
+	<h1 class="title"></h1>
+
+    <button ng-if="currentRoundController().isSkippable()"
+            class="button button-clear button-positive"
+            ng-click="clickSkipRound();"
+            ng-hide="currentRoundIndex()==numberOfRounds() ||
+            !currentRoundController().isSkippable()">
+        {{'SKIP'|translate}}
+    </button>
+</ion-header-bar>
+
+<!-- round-container -->
+<ion-content scroll="false" class="arg-gradient">
+    <ion-slide-box
+            on-slide-changed="slideHasChanged($index)"
+            show-pager="false"
+            disable-scroll="true"
+            delegate-handle="LevelSlideBox">
+
+		<ion-slide
+                ng-repeat="round in data.rounds"
+                style="overflow: hidden;">
+
+			<!-- Create a new scope with a generic RoundController instance -->
+			<div ng-controller="RoundController" class="arg-round-container">
+
+				<!-- Create new sub-scope -->
+				<ion-content id="round-scroll"
+                        scroll="true"
+                        ng-dynamic-controller="round.view + 'Controller'"
+                        has-bouncing="true"
+                        delegate-handle="RoundScrollView">
+
+					    <ng-include
+                                src="'GameContent/Rounds/' + round.view + '/' + round.view + '.html'"
+					            ng-init="registerRoundController(this,$index)"></ng-include>
+
+					    <!-- Adds additional for the Go On button.-->
+					    <div style="height: 70px; width: 10px; background: transparent; clear: both;"></div>
+				</ion-content>
+
+                <ng-include src="footer + '.html'"></ng-include>
+			</div>
+		</ion-slide>
+    </ion-slide-box>
+</ion-content>
+</ion-modal-view>

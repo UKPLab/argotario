@@ -1,0 +1,60 @@
+<!-- The generic User Profile -->
+<div ng-controller="ProfileController">
+
+    <arg-avatar size="100"
+                avatar="visitedForeignUser.customData.avatar"
+                placeholder="Resources/Images/AvatarPlaceholder@2x.jpg"
+                style="margin: 10px auto;"
+                ng-click="clickAvatar();"></arg-avatar>
+
+    <h1 class="padding centered" style="padding-bottom: 50px;">
+        {{ visitedForeignUser.user}}
+    </h1>
+
+    <arg-account-display points="visitedForeignUser.customData.points"
+                         currency="currency"
+                         secondary-currency="A"
+                         ranking="visitedForeignUser.ranking"
+                         large="yes"
+                         ng-click="openAccount()"
+                         style="margin: -100px; left: 50%; position: absolute; width: 200px;"
+                         id="mainAccount"></arg-account-display>
+
+    <p class="royal centered" ng-if="isUser(visitedForeignUser.user)">{{'THATS_YOU'|translate}}</p>
+
+    <div style="padding-bottom: 10px;">
+        <button class="button button-positive button-round" ng-if="authenticated && !isUser(visitedForeignUser.user) && isFollowing(visitedForeignUser.user)" ng-click="clickUnfollowUser(visitedForeignUser.user)">
+            {{'UNFOLLOW'|translate}}
+        </button>
+
+        <button class="button button-positive button-round" ng-if="authenticated && !isUser(visitedForeignUser.user) && !isFollowing(visitedForeignUser.user)" ng-click="clickFollowUser(visitedForeignUser.user)">
+            {{'FOLLOW'|translate}}
+        </button>
+    </div>
+
+    <ion-list style="margin-top: 10px;">
+
+        <ion-item class="item-divider" ng-if="topics.length>0">{{'TOPICS_OF_INTEREST'|translate}}</ion-item>
+
+        <ion-item class="item-checkbox" ng-repeat="topic in topics">
+            <label class="checkbox">
+                <input type="checkbox" ng-model="topic.chosen">
+            </label>
+            {{topic.title}}
+        </ion-item>
+
+        <!-- Following -->
+        <ion-item class="item-divider">{{'FOLLOWING'|translate}}</ion-item>
+        <arg-user-sublist title="Follows" users="visitedForeignUser.following" empty-label="No one yet! Go follow someone!"></arg-user-sublist>
+
+        <ion-item class="item-icon-left" ng-click="clickFollowSomeone();" ng-if="visitedForeignUser.isUser">
+            <i class="icon ion-plus-round positive"></i>
+            <span class="positive">{{'SEARCH_AND_FOLLOW_SOMEONE'|translate}}</span>
+        </ion-item >
+
+        <!-- Followers -->
+        <ion-item class="item-divider">{{'FOLLOWED_BY'|translate}}</ion-item>
+        <arg-user-sublist title="Followed by" users="visitedForeignUser.followers" empty-label="No one yet!"></arg-user-sublist>
+
+    </ion-list>
+</div>

@@ -1,0 +1,13 @@
+<ion-modal-view ng-controller="ForeignProfileController">
+    <ion-header-bar>
+        <h1 class="title">
+            <span ng-if="authenticated">
+                {{'PROFILE_OF'|translate}} <strong>{{ visitedForeignUser.user}}</strong>
+            </span>
+        </h1>
+        <button class="button button-clear button-positive" ng-click="closeForeignProfile();">{{'DONE'|translate}}</button>
+    </ion-header-bar>
+    <ion-content delegate-handle="ForeignProfileScrollView">
+        <ng-include src="'Views/Profile.html'"></ng-include>
+    </ion-content>
+</ion-modal>

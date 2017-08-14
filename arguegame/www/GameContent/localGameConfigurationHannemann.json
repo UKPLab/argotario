@@ -1,0 +1,327 @@
+{
+    "worlds": [{
+        "title":                "Green Lands",
+        "id":                   "GreenWorld",
+        "background":           "map1.png",
+        "enabled":  true,
+        "levels": [
+
+        {
+            "id":               "FirstLevel",
+            "title":			"Hello!",
+            "icon":             "ion-happy",
+            "iconColor":        "royal",
+            "backgroundColor":  "white",
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.36,
+                "y":            0.87
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "Lvl1Rnd1"
+                            }
+                        },
+
+                        {
+                            "id":			"r2",
+                            "view":			"StanceRecognition"
+                        },
+
+                        {
+                            "id":			"r3",
+                            "view":			"PickTheComponent"
+                        },
+
+                        {
+                            "id":           "r4",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstComposingRound1"
+                            }
+                        },
+
+                        {
+                            "id":           "r4",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstComposingRound2"
+                            }
+                        },
+
+                        {
+                            "id":           "r4",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstComposingRound3"
+                            }
+                        },
+
+                        {
+                            "id":           "r4",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstComposingRound4"
+                            }
+                        },
+
+                        {
+                            "id":			"r5",
+                            "view":			"ComposeArgument"
+                        },
+
+                        {
+                            "id":           "r6",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstComposingRoundDone"
+                            }
+                        }
+                    ]
+        },
+
+        {
+            "id":               "SecondLevel",
+            "title":			"Bonus!",
+            "icon":             "ion-cash",
+            "iconColor":        "dark",
+            "backgroundColor":  "#ffef38",
+            "requiresCompletion":[0],
+            "isBonusLevel":     true,
+            "coordinates":      {
+                "x":            0.62,
+                "y":            0.805
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+
+                        {
+                            "id":			"r1",
+                            "view":			"StanceRecognition"
+                        },
+
+                        {
+                            "id":			"r3",
+                            "view":			"ComposeArgument"
+                        },
+
+                        {
+                            "id":			"r4",
+                            "view":			"StanceRecognition"
+                        },
+
+                        {
+                            "id":			"r5",
+                            "view":			"PickTheComponent"
+                        }
+                    ]
+        },
+
+        {
+            "id":               "ThirdLevel",
+            "title":			"Education",
+            "icon":             "ion-university",
+            "iconColor":        "stable",
+            "backgroundColor":  "#f03da6",
+            "requiresCompletion":[0,1],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.22,
+                "y":            0.55
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "EducationLvl"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"StanceRecognition",
+                            "parameters":   {
+                                "domain":      "education"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"ComposeArgument",
+                            "parameters":   {
+                                "domain":      "education"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"StanceRecognition",
+                            "parameters":   {
+                                "domain":      "education"
+                            }
+                        },
+
+                        {
+                            "id":			"r4",
+                            "view":			"PickTheComponent",
+                            "parameters":   {
+                                "domain":      "education"
+                            }
+                        }
+                    ]
+        },
+
+        {
+            "id":               "FourthLevel",
+            "title":			"Random!",
+            "icon":             "ion-shuffle",
+            "iconColor":        "stable",
+            "backgroundColor":  "#2bc295",
+            "requiresCompletion":[0,1],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.81,
+                "y":            0.59
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":			"r1",
+                            "view":			"StanceRecognition"
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"StanceRecognition"
+                        },
+
+                        {
+                            "id":			"r3",
+                            "view":			"PickTheComponent"
+                        },
+
+                        {
+                            "id":			"r4",
+                            "view":			"ComposeArgument"
+                        }
+                    ]
+        },
+
+        {
+            "id":               "FifthLevel",
+            "title":			"Environment",
+            "icon":             "ion-leaf",
+            "iconColor":        "stable",
+            "backgroundColor":  "#a9d936",
+            "requiresCompletion":[0,1,2],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.62,
+                "y":            0.45
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "EnvironmentLvl"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"StanceRecognition",
+                            "parameters":   {
+                                "domain":      "environment"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"ComposeArgument",
+                            "parameters":   {
+                                "domain":      "environment"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"StanceRecognition",
+                            "parameters":   {
+                                "domain":      "environment"
+                            }
+                        },
+
+                        {
+                            "id":			"r4",
+                            "view":			"PickTheComponent",
+                            "parameters":   {
+                                "domain":      "environment"
+                            }
+                        }
+                    ]
+        },
+
+        {
+            "id":               "SixthLevel",
+            "title":			"Last!",
+            "icon":             "ion-flag",
+            "iconColor":        "stable",
+            "backgroundColor":  "#2c3b36",
+            "requiresCompletion":[0,1,2,3],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.52,
+                "y":            0.13
+            },
+            "customView":		"NonskippableLevel",
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "EndLvl"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"ComposeArgument"
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"StanceRecognition"
+                        },
+
+                        {
+                            "id":			"r4",
+                            "view":			"PickTheComponent"
+                        }
+                    ]
+        }
+
+
+
+        ]
+    },
+
+    {
+        "title":        "Dark Lands",
+        "id":           "DarkLands",
+        "enabled":      false,
+        "background":   "map2.png",
+        "levels": []
+    }]
+}

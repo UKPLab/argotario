@@ -1,0 +1,17 @@
+<style>
+#chart {
+    width: 320px;
+    height: 200px;
+}
+</style>
+
+<div ng-controller="UserProgressController" class="padding">
+    <h1>Hey, <span class="positive">{{ user.user}}</span>!</h1>
+    <p>You have <strong class="positive">{{ currency }}{{ user.customData.points }}</strong>.</p>
+
+    <canvas id="myChart" width="400" height="400"></canvas>
+
+
+    <p>{{myNewChart}}</p>
+
+</div>

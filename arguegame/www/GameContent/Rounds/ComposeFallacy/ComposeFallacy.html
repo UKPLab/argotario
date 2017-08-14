@@ -1,0 +1,137 @@
+<style media="screen">
+.item-choose-avatar {
+    height: 80px;
+    padding: 20px 0;
+    display: block;
+    margin: 0 auto;
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 30px;
+    padding: 2px;
+    box-sizing: border-box;
+    font-size: 50px;
+}
+.arg-components {
+    border: 2px solid transparent;
+    border-radius: 14px;
+    -webkit-transition: border-color 1s ease-out;
+}
+.arg-components p {
+    margin: 2px;
+    background: blue;
+    -webkit-transition: background 1s ease-out;
+}
+
+.arg-components span {
+    display: block;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.as-sortable-item.as-first,
+.as-sortable-placeholder.as-first {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.as-sortable-item.as-last,
+.as-sortable-placeholder.as-last {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.as-sortable-placeholder {
+    background: #ddf2f5 !important;
+    border: 2px dashed blue;
+}
+
+.as-sortable-drag {
+    opacity: 0.7;
+    border-radius: 4px;
+}
+
+.arg-components-marked-as-correct {
+    border-color: #34bb45;
+}
+
+.arg-components-marked-as-incorrect {
+    border-color: #c14b0f;
+}
+
+.arg-components-marked-as-correct p {
+    background: #34bb45;
+}
+.arg-components-marked-as-incorrect p {
+    background: #c14b0f;
+}
+
+
+</style>
+
+<arg-round-explanation ng-if="gameData.loading" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="!gameData.loading">
+
+<arg-round-head>
+    <arg-round-title><i class="{{gameData.fallacy.icon}} item-choose-avatar"></i></arg-round-title>
+    <arg-round-explanation>
+        <span ng-show="gameData.fallacy">
+          {{'WRITE_AN_ARGUMENT_OF_TYPE'|translate}}
+          <strong class="royal">{{ gameData.fallacy.title[language] }}</strong>
+        </span>
+    </arg-round-explanation>
+
+    <arg-article-link model="gameData.article" on-tap="openBrowser('{{ gameData.article.permalink }}')" ng-if="gameData.article" style="margin-bottom: 20px; border-bottom: 1px solid gray;"></arg-article-link>
+
+    <arg-session-description domain="gameData.domain" topic="gameData.topic" fallacy="gameData.fallacy" class="arg-session-centered" language="language"></arg-session-description>
+
+</arg-round-head>
+
+
+<ion-list show-delete="showDelete">
+
+    <ion-item>
+        <arg-pro-contra-choice on-pro-tap=""
+                               on-contra-tap=""
+                               selected-stance="gameData.argument.stance"></arg-pro-contra-choice>
+    </ion-item>
+
+    <ion-item ng-repeat="component in gameData.argument.components">
+
+        <label class="item-input item-floating-label">
+            <span class="input-label">{{'ARGUMENT'|translate}}</span>
+
+            <textarea id="arg-textarea-{{$index+1}}"
+                      placeholder="{{'YOUR_ARGUMENT'|translate}}"
+                      id="input-field-{{$index}}"
+                      class="input-field-{{ component.type }}"
+                      ng-model="component.body"
+                      ng-blur="onComponentBlur(component,$index)"
+                      ng-change="onComponentChange(component,$index +1);"
+                      tabindex="{{$index +1}}"></textarea>
+        </label>
+    </ion-item>
+    <!--
+    <ion-item>
+        <label class="item-input item-floating-label">
+            <span class="input-label">{{'EXPLANATION'|translate}}</span>
+
+            <textarea id="arg-textarea-explanation"
+                      placeholder="{{'YOUR_EXPLANATION'|translate}}"
+                      id="input-field-explanation"
+                      class="input-field-explanation"
+                      ng-model="gameData.argument.explanation"
+                      ng-blur="onComponentBlur(component,'explanation')"
+                      ng-change="onComponentChange(component,'explanation');"
+                      tabindex="'explanation'"></textarea>
+        </label>
+    </ion-item>
+    -->
+
+</ion-list>
+</div>

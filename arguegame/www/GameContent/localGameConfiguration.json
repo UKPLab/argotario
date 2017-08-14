@@ -1,0 +1,370 @@
+{
+    "worlds": [
+    {
+        "title":        "Green World",
+        "id":           "GreenWorld",
+        "enabled":      true,
+        "background":   "map1.png",
+        "levels": [
+
+        {
+            "id":               "FirstLevel2",
+            "title":			"Emotion!",
+            "icon":             "ion-heart",
+            "iconColor":        "dark",
+            "backgroundColor":  "white",
+            "isBonusLevel":     false,
+            "randomizesRangesOfRounds" : [[3, 5]],
+            "coordinates":      {
+                "x":            0.33,
+                "y":            0.87
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "Lvl2Rnd1"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "Lvl2Rnd2"
+                            }
+                        },
+                        {
+                            "id":           "r3",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "1"
+                            }
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "lt",
+                                "difficulty": "1"
+                            }
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": "1"
+                            }
+                        },
+                        {
+                            "id":			"r6",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "lte",
+                                "difficulty": "1"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "SecondLevel2",
+            "title":			"Fishy!",
+            "icon":             "ion-merge",
+            "iconColor":        "dark",
+            "backgroundColor":  "#2bc295",
+            "requiresCompletion":[0],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.62,
+                "y":            0.80
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "FallacyRecognition",
+                            "parameters": {
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "ThirdLevel2",
+            "title":			"write!",
+            "icon":             "ion-edit",
+            "iconColor":        "dark",
+            "backgroundColor":  "yellow",
+            "requiresCompletion":[0,1],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.72,
+                "y":            0.55
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstFallacyComposingRound1"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"ComposeFallacy",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstFallacyComposingRoundDone"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "FourthLevel2",
+            "title":			"comp/div!",
+            "icon":             "ion-aperture",
+            "iconColor":        "dark",
+            "backgroundColor":  "grey",
+            "requiresCompletion":[0,1,2],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.25,
+                "y":            0.40
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "3"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": "3"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"ComposeFallacy",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "3"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "FifthLevel2",
+            "title":			"Hot!",
+            "icon":             "ion-flame",
+            "iconColor":        "dark",
+            "backgroundColor":  "red",
+            "requiresCompletion":[0,1,2,3],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.55,
+                "y":            0.15
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstHotFallacyRecognitionRound"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "3"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition"
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition"
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"FallacyRecognition"
+                        }
+                    ]
+        }
+        ]
+    },
+    {
+        "title":        "Dark Lands",
+        "id":           "DarkLands",
+        "enabled":      true,
+        "background":   "map2.png",
+        "levels": [
+
+            {
+                "id":               "PvPIntro",
+                "title":			"Intro!",
+                "icon":             "ion-information",
+                "iconColor":        "dark",
+                "backgroundColor":  "white",
+                "isBonusLevel":     false,
+                "coordinates":      {
+                    "x":            0.20,
+                    "y":            0.75
+                },
+                "customView":		"NonskippableLevel",
+                "parameters":{
+                },
+
+                "rounds": [
+                            {
+                                "id":           "r1",
+                                "view":         "StaticContent",
+                                "parameters": {
+                                    "HTMLFile": "FirstPvPComposingRound1"
+                                }
+                            },
+                            {
+                                "id":           "r2",
+                                "view":         "StaticContent",
+                                "parameters": {
+                                    "HTMLFile" : "FirstPvPComposingRound2"  
+                                }
+                            },
+                            {
+                                "id":           "r3",
+                                "view":         "StaticContent",
+                                "parameters": {
+                                    "HTMLFile" : "FirstPvPComposingRound3"  
+                                }
+                            },
+                            {
+                                "id":           "r4",
+                                "view":         "StaticContent",
+                                "parameters": {
+                                    "HTMLFile" : "FirstPvPComposingRound4"  
+                                }
+                            }
+                            
+                        ]
+        },
+        {
+            "id":               "PvP",
+            "title":			"Play!",
+            "completable":      false,
+            "icon":             "ion-ios-game-controller-a-outline",
+            "iconColor":        "dark",
+            "backgroundColor":  "white",
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.50,
+                "y":            0.75
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "SessionSelect",
+                            "parameters": {
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "Session",
+                            "parameters": {
+                            }
+                        }
+                        
+                    ]
+        },
+        {
+            "id":               "PvPJudge",
+            "title":			"Judge!",
+            "icon":             "ion-compass",
+            "iconColor":        "dark",
+            "backgroundColor":  "white",
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.50,
+                "y":            0.25
+            },
+            "customView":		"NonskippableLevel",
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "SessionJudge"
+                        }
+                        
+                    ]
+        }
+        
+        ]
+        }
+        ]
+    }

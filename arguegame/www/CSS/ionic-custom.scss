@@ -1,0 +1,32 @@
+
+/** Copy'n'paste variables from the _variables.scss file to customize the look-and-feel of the app */
+
+$light:                 #fff !default;
+$stable:                #f0f0f0 !default;
+$positive:              #0084ff !default; //#4a87ee;
+$calm:                  #40A7CF !default; //#43cee6;
+$balanced:              #a2c57a !default; //#66cc33
+$energized:             #f0b840 !default;
+$assertive:             #ef4e3a !default;
+$royal:                 #8a6de9 !default;
+$dark:                  #333 !default;
+
+
+$font-family-sans-serif:          "MuseoSansRounded", "Helvetica Neue", "Roboto", sans-serif !default;
+$font-family-light-sans-serif:    "MuseoSansRounded", "HelveticaNeue-Light", "Roboto-Light", sans-serif-light !default;
+
+/* A font by Jos Buivenga (exljbris) -> www.exljbris.com */
+@font-face {
+    font-family: "MuseoSansRounded";
+    font-weight: normal;
+    src: url("../Resources/Fonts/museosansrounded-300.woff") format('woff');
+}
+
+/* A font by Jos Buivenga (exljbris) -> www.exljbris.com */
+* {
+    font-family: 'MuseoSansRounded', sans-serif !important;
+    font-weight: normal;
+}
+
+/** Now import the Ionic SCSS file, which will make use of the definitions above. */
+@import "../lib/ionic/scss/ionic.scss";

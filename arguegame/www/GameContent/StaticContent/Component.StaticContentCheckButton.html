@@ -1,0 +1,16 @@
+<!-- We're passing 'this' as the parameter so that the input validation method of the $scope of the RoundController sub-class is being used, instead of the one in the RoundController. -->
+<ion-footer-bar class="bar-continue" id="arg-continue-bar">
+    <arg-countdown defer="{{ usedCountdownDelay }}"
+                   duration="{{ usedCountdownDuration }}"
+                   color="#0084ff"
+                   background-color="#eee"
+                   height="3"
+                   on-finish="countdownDidFinish()"
+                   controller="countdownController"
+                   ng-if="usedCountdownDuration"></arg-countdown>
+
+                   <a ng-click="roundControllerSubclassScope ? roundControllerSubclassScope.clickReportData() : clickReportData()" class="arg-report-button"><i class="button button-clear button-energized ion-ios-flag"></i>
+                   </a>
+   <a ng-click="clickToggle($event)" class="button button-positive button-round" id="arg-check-button-{{round.id}}" ng-disabled="!roundControllerSubclassScope.prepareHasFinished||disabledCheckButton">{{'GO_ON'|translate}}</a>
+   <a ng-click="clickHelp($event)" class="arg-help-button"><i class="button button-clear button-energized ion-help"></i></a>
+</ion-footer-bar>

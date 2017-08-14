@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width height=device-height">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!--<base href="."></base>-->
+
+    <!-- Config file -->
+    <script src="config-device-prod.js"></script><!-- Will work on devices -->
+    <script src="../config-web-prod.js"></script><!-- Will fail on devices, on only work on the web app -->
+    <script src="./.dev/config-web-dev.js"></script><!-- Will overwrite previous configs only locally -->
+
+    <title>Argotario!</title>
+    <link rel="apple-touch-icon" href="Resources/Images/AppIcon.png">
+    <link rel="apple-touch-icon" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-60@2x.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-60@3x.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-76.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-76@2x.png" />
+    <link rel="apple-touch-icon" sizes="58x58" href="Resources/Images/icon/ios/AppIcon.appiconset/Icon-Small@2x.png" />
+
+    <!-- CSS -->
+    <link href="CSS/ionic-custom.css" rel="stylesheet" />
+    <link href="CSS/style.css" rel="stylesheet" t>
+    <link href="CSS/ArgIonic.css" rel="stylesheet" t>
+    <link href="CSS/animate.css" rel="stylesheet">
+    <link href="CSS/ArgDirectives.css" rel="stylesheet">
+    <link href="lib/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+
+    <!-- Vendor.js: contains all files matching the rules specified in the gulpfile.js -->
+    <script src="bin/Vendor.js"></script>
+
+	<!-- Libraries -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/angular-translate/angular-translate.js"></script>
+    <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="lib/ng-cordova/dist/ng-cordova.js"></script>
+    <script src="cordova.js"></script>
+
+    <!-- App.js: contains all files matching the rules specified in the gulpfile.js -->
+    <script src="bin/App.js"></script>
+
+  </head>
+    <body class="platform-browser platform-cordova platform-webview">
+        <noscript>No JS?</noscript>
+        <div id="app-wrapper" ng-app="app" ng-include="'Views/RootView.html'">
+        </div>
+    </body>
+</html>

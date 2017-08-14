@@ -1,0 +1,47 @@
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<arg-round-head ng-if="prepareHasFinished" id="session-select-head">
+    <arg-round-title>
+        <div id ="session-choice-button-bar" class="button-bar">
+            <a id="session-choice-active-button"
+                    ng-class="{'marked' : gameData.pointingActive}"
+                    class="button button-positive icon-left ion-arrow-left-b" ng-click="pointActive()">{{'ACTIVE'|translate}}</a>
+            <a id="session-choice-gameover-button"
+                    ng-class="{'marked' : !gameData.pointingActive}"
+                    class="button button-positive icon-right ion-arrow-right-b" ng-click="pointGameover()">{{'COMPLETED'|translate}}</a>
+        </div>
+    </arg-round-title>
+</arg-round-head>
+<arg-round-body>
+    <div class="list">
+        <a ng-repeat="session in gameData.sessionPointer | orderBy:'-_timestamp'"
+            class="item item-avatar"
+            href="#"
+            ng-class="{ 'highlighted': session.selected, 'changed': session.changed }"
+            ng-click="selectSession(session)">
+            <div ng-if="session.users['1']">
+                <i class="icon ion-person-stalker royal"></i>
+                <h2>{{session.users['0']}} {{'VS'|translate}} {{session.users['1']}}</h2>
+                <div ng-if="session.out_winner" class="judged">
+                    <i ng-if="!iGotRewarded(session)" class="reward-money ion-cash"><br/></i>
+                    <span class="draw" ng-if="draw(session)">{{'DRAW'|translate}}</span>
+                    <span class="win" ng-if="iWin(session)">{{'YOU_WIN'|translate}}</span>
+                    <span class="lose" ng-if="iLose(session)">{{'YOU_LOSE'|translate}}</span>
+                </div>
+            </div>
+            <div ng-if="!session.users['1']">
+                <i class="icon ion-ios-body royal"></i>
+                <h2>{{session.users[0]}} {{'VS'|translate}} ??</h2>
+            </div>
+            <span ng-if="session.ticker!= null" class="badge badge-assertive">{{session.ticker+1}}</span>
+            <p ng-if="session.ticker!=null">
+                <span ng-if="imActive(session)" class="important">{{'YOUR_TURN'|translate}}</span>
+                <span ng-if="!imActive(session)">{{'OTHER_PLAYERS_TURN'|translate}}</span>
+            </p>
+            <p ng-if="session.ticker==null">{{'GAME_OVER'|translate}}</p>
+            <p id="change-notification" ng-if="session.changed">{{'SESSION_JUST_CHANGED'|translate}}</p>
+        </a>
+    </div>
+</arg-round-body>

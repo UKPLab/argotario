@@ -1,0 +1,81 @@
+<!doctype html public "✰">
+<!--[if lt IE 7 ]><html lang=en-us class="no-js ie6"><![endif]-->
+<!--[if IE 7 ]><html lang=en-us class="no-js ie7"><![endif]-->
+<!--[if IE 8 ]><html lang=en-us class="no-js ie8"><![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang=en-us class=no-js> <!--<![endif]-->
+<head>
+	<meta charset=utf-8>
+	<meta http-equiv=X-UA-Compatible content="IE=Edge;chrome=1">
+	
+	<title  dir=ltr>HTML5 Base</title>
+	<meta name=viewport content="width=device-width, initial-scale=1.0">  
+	
+	
+	<style>
+	body {
+		
+		background: gray;
+	}
+		arg-article {
+			display: block;
+			width: 300px;
+			height: 200px;
+			background: white;
+			position: relative;
+			padding: 10px 15px;
+			box-sizing: border-box;
+		}
+		arg-article a {
+			color: inherit;
+			text-decoration: none;
+		}
+		.arg-article-border-top {
+			background: url('Newspaper-TopEdge@2x.png');
+			position: absolute;
+			top: -10px;
+			left: 0;
+			right: 0;
+			height: 10px;
+			background-size: 12px 10px;
+		}
+		arg-article-icon {
+			display: block;
+			width: 40px;
+			height: 40px;
+			background: #f1f1f1;
+			border-radius: 5px;
+			text-align: center;
+			line-height: 40px;
+			font-size: 25px;
+		}
+		arg-article-publisher {
+			position: absolute;
+			left: 65px;
+			top: 15px;
+			font-size: 13px;
+			text-transform: uppercase;
+			color: #666;
+		}
+		arg-article-headline {
+			font: normal 1em/1.5em Georgia, serif;
+			position: absolute;
+			left: 65px;
+			top: 30px;
+			font-size: 13px;
+		}
+	</style>
+</head>
+<body>
+	
+	<arg-article>
+		<div class="arg-article-border-top"></div>
+		<a class="button button-icon  button-positive" href="javascript:;" ng-click="onTap({URL:model.permalink})">
+		    <div class="button button-clear icon ion-ios-paper"></div>
+		    <arg-article-icon>S</arg-article-icon>
+		    <arg-article-publisher>{{ model.publisher }}</arg-article-publisher>
+		    <arg-article-headline>{{ model.headline }}</arg-article-headline>
+	    </a>
+    </arg-article>
+	                
+</body>
+</html>

@@ -1,0 +1,17 @@
+<ion-modal-view ng-controller="AuthenticationController">
+    <ion-header-bar>
+        <h1 class="title">Login</h1>
+    </ion-header-bar>
+    <ion-content>
+
+        <ng-include src="'Views/AuthenticationForm.html'"></ng-include>
+
+        <p class="padding">
+            {{'NO_ACCOUNT_YET'|translate}}
+            <a class="button button-clear button-positive button-inline" ng-click="openRegistration();">
+                {{'CREATE_AN_ACCOUNT'|translate}} <i class="ion-ios-arrow-forward"></i>
+            </a>
+        </p>
+
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,23 @@
+<style>
+    
+</style>
+<ion-modal-view id = "potw-modal">
+    <div>
+        <ion-header-bar class="bar-stable">
+            <h1 class="title">Player of the Week</h1>
+            <button class="button button-clear button-positive" ng-click="potwModal.hide();">Done</button>
+        </ion-header-bar>
+    </div>
+    <div id='potw'>
+        <arg-user-sublist title="Best Users" users="[potw]" space="globalHighscore.space" show-ranking="true"></arg-user-sublist>
+    </div>
+    <p>
+        So far {{potw.user}} is the best player of the week.
+        Remember, the best player will win an Amazon-voucher! 
+        You have time until Sunday 11.59 pm to score. 
+        Good Luck!
+    </p>
+
+
+
+</ion-modal-view>

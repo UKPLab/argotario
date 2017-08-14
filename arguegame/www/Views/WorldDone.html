@@ -1,0 +1,53 @@
+<style>
+    #arg-world-done {
+        text-align: center;
+    }
+    #arg-world-done .inner {
+        width: 280px;
+        height: 280px;
+        background: white;
+        border-radius: 40px;
+        position: relative;
+        margin: 120px auto;
+    }
+    #arg-world-done .ranking-bubble {
+        border-radius: 100%;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+        position: absolute;
+        background: #0d7eff;
+        color: white;
+        left: 60%;
+        margin-left: -50px;
+        top: -50px;
+        -webkit-animation-delay: 2s;
+        -webkit-animation-duration: 1500ms;
+        z-index: 100;
+    }
+    #arg-world-done h1 {
+        color: #0d7eff;
+        margin-top: 100px;
+    }
+    #arg-world-done .button {
+        position: absolute;
+        bottom: 15px;
+        left: 10px;
+        right: 10px;
+    }
+</style>
+
+<div id="arg-world-done" class="arg-level-modal">
+    <div class="inner">
+        <span class="ranking-bubble current-ranking tada">{{'YEAH'|translate}}</span>
+
+        <div class="padding">
+            <h1>{{'WOHOO'|translate}}</h1>
+            <p>{{'YOU_HAVE_COMPLETED_ALL_LEVELS'|translate}}</p>
+        </div>
+        <a class="button button-positive button-round button-bordered" ng-click="doneModal.hide()">{{'GO_ON'|translate}}</a>
+    </div>
+</div>

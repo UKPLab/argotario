@@ -1,0 +1,20 @@
+{
+  "name": "Argue!",
+  "app_id": "",
+  "gulpStartupTasks": [
+  	"watchVendorJs",
+  	"watchAppJs"
+  ],
+  "watchPatterns": [
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/Vendor/**/*",
+    "!www/Docs/**/*"
+  ],
+  "proxies": [
+      {
+        "path": "/v1",
+        "proxyUrl": "http://localhost:9000"
+      }
+    ]
+}

@@ -1,0 +1,24 @@
+<arg-round-explanation ng-if="gameData.loading" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="!gameData.loading">
+
+<arg-round-head>
+
+    <arg-round-title>Can you pick the <span class="positive">{{ gameData.componentName }}</span>?</arg-round-title>
+    <arg-round-explanation>Read the following argument and tap on what you think is the {{ gameData.componentName }} of this argument!</arg-round-explanation>
+
+    <arg-topic-description model="gameData.topic"></arg-topic-description>
+
+    <arg-argument ng-if="gameData.argument" model="gameData.argument"
+                  highlighted-correctly="gameData.highlightedCorrectlyIndexes"
+                  class="arg-argument-centered"
+                  highlighted-wrongly="gameData.highlightedWronglyIndexes"
+                  on-component-tap="clickComponent(idx,component,event)"></arg-argument>
+
+    <arg-article-link model="gameData.article" on-tap="openBrowser('{{gameData.article.permalink}}')" ng-if="gameData.article" style="margin: 30px auto -20px;"></arg-article-link>
+
+</arg-round-head>
+
+</div>

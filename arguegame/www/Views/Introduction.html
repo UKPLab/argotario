@@ -1,0 +1,80 @@
+<style>
+#introductionSlideBox {
+
+}
+#introductionSlideBox .padding {
+    padding: 20px 20px 0;
+}
+#introductionSlideBox .list {
+    margin: 23px;
+}
+#introductionSlideBox img {
+    width: 120px; position: absolute; right: 10px; bottom: -30px;
+    -webkit-animation-duration: 1s;
+}
+#introductionSlideBox p {
+    padding-top: 20px;
+    width: auto;
+    max-width: 320px;
+}
+</style>
+
+<ion-modal-view ng-controller="IntroductionController">
+
+    <ion-content scroll="false">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true" id="introductionSlideBox" delegate-handle="IntroductionSlideBox" disable-scroll="true">
+            <ion-slide>
+                <div class="full-sized blue padding">
+                    <label class="item item-input">
+                      <ion-radio ng-model="$parent.$parent.$parent.$parent.language" ng-repeat="l in languages"
+                       ng-change="applyLanguageChange()" ng-value="l._id">
+                          <span class="flag-icon flag-icon-{{l.flag}}"></span> {{l.title}}
+                      </ion-radio>
+                    </label>
+
+                    <h1>
+                        {{'WELCOME_TO'|translate}}<br />
+                        <span class="positive">Argotario</span>!
+                    </h1>
+
+                    <img src="Resources/Images/Guy-Hint@2x.png" id="intro-dude" ng-click="twerk('intro-dude')" style="" />
+
+                    <p>
+                        {{'WITH_ARGOTARIO_YOULL_LEARN'|translate}}
+                    </p>
+
+                    <button ng-click="nextSlide()" class="button button-clear button-positive button-round" style="bottom: 50px; position: absolute; left: 50%; width: 200px; margin-left: -100px;">{{'NEXT'|translate}}</button>
+
+                </div>
+            </ion-slide>
+
+            <ion-slide class="">
+                <ion-content class="full-sized yellow">
+                    <div class="padding">
+                        <h1>{{'GET_AN_ACCOUNT'|translate}}</h1>
+                        <p>{{'WE_USE_ACCOUNTS'|translate}}</p>
+                        <a ng-click="openAuthentication();" class="button button-clear button-positive button-inline">
+                          {{'ALREADY_SIGNED_UP'|translate}}
+                          <i class="ion-ios-arrow-forward"></i>
+                        </a>
+                    </div>
+                    <ng-include src="'Views/RegistrationForm.html'"></ng-include>
+                    <div class="padding">
+                        <p>{{'ALL_CONTRIBUTIONS_ARE_CC0'|translate}}</p>
+                    </div>
+                </ion-content>
+            </ion-slide>
+
+            <ion-slide>
+                <div class="full-sized padding">
+                    <img src="Resources/Images/Betty-Support@2x.png" ng-click="twerk('intro-betty')" id="intro-betty"/>
+                    <h1>{{'YOU_ARE_GOOD_TO_GO'|translate}}</h1>
+                    <p>{{'HAVE_FUN_PLAYING'|translate}}</p>
+                    <button ng-click="clickCompleteIntroduction()" class="button button-clear button-positive button-round" style="bottom: 50px; position: absolute; left: 50%; width: 200px; margin-left: -100px;">{{'LETS_GO'|translate}}</button>
+
+                </div>
+            </ion-slide>
+
+            </ion-slide-box>
+    </ion-content>
+</ion-modal-view>

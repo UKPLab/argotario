@@ -1,0 +1,30 @@
+<ion-list style="max-width: 400px; overflow: hidden;" ng-controller="RegistrationFormController">
+
+    <label class="item item-input">
+        <span class="input-label">{{'EMAIL_ADDRESS'|translate}}</span>
+        <input type="text" ng-model="emailAddress">
+    </label>
+
+    <label class="item item-input">
+        <span class="input-label">{{'NICKNAME'|translate}} *</span>
+        <input type="text" ng-model="username">
+    </label>
+
+    <label class="item item-input">
+        <span class="input-label">{{'PASSWORD'|translate}} *</span>
+        <input type="password" ng-model="password">
+    </label>
+
+    <label class="item item-input">
+        <span class="input-label">{{'LANGUAGE'|translate}} *</span>
+        <ion-radio ng-model="$parent.language" ng-repeat="l in languages"
+        ng-change="applyLanguageChange()" ng-value="l._id">
+            <span class="flag-icon flag-icon-{{l.flag}}"></span> {{l._id|uppercase}}
+        </ion-radio>
+    </label>
+
+    <!-- TODO what is this for? <ion-radio ng-model="choice" ng-value="'A'">Choose A</ion-radio> -->
+    <button class="button button-clear button-positive button-round" id="arg-submit-registration" ng-click="clickRegister()">{{'MAKE_MY_ACCOUNT'|translate}}</button>
+    <span class="padding">* {{'REQUIRED_FIELDS'|translate}}</span>
+
+</ion-list>

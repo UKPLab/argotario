@@ -1,0 +1,44 @@
+<div class="arg-world-loading" ng-hide="model.$ready"><i class="icon positive ion-loading-d"></i></div>
+<div class="arg-world" style="background-image: url('GameContent/Worlds/{{model.id}}/{{model.background}}');" ng-class="{'arg-world-enabled': model.enabled, 'arg-world-ready':model.$ready}">
+	<div class="done-badge bounceInUp" ng-if="completed"><i class="ion-checkmark"></i></div>
+
+	<div style="margin: -20px; position: absolute;" class="fog-of-war-container">
+		<svg class="fog-of-war">
+			<defs>
+				<mask id="world-hole-mask-{{ model.id }}">
+					<rect width="100%" height="100%" fill="#aaa"></rect>
+				</mask>
+			</defs>
+			<rect id="donut" width="100%" height="100%" mask="url(#world-hole-mask-{{ model.id }})" fill="white"></rect>
+		</svg>
+	</div>
+
+	<ul>
+		<li ng-repeat="level in model.levels"
+		    ng-click="_onTapLevel({level:level,index:$index});"
+			on-touch="onTouch(level);"
+			on-release="onRelease(level);"
+			style="left: {{ level.coordinates.x*100 }}%; top: {{ level.coordinates.y*100 }}%"
+			class="arg-level {{ level.backgroundClass }}"
+			ng-class="{
+				'arg-world-level-completed':level.completed,
+				'arg-world-level-unlocked':level.unlocked,
+				'arg-world-level-touched':level.touched,
+            	'arg-world-level-changed':level.changed,
+				'arg-world-bonus-level':level.isBonusLevel
+			}">
+			<div class="pulse"></div>
+			<div class="arg-level-body {{ level.iconColor }}" ng-style="{'background-color':level.backgroundColor}">
+				<div class="inner">
+					<i class="icon {{ level.icon }}"></i>
+					<span class="arg-level-title">{{ level.title }}</span>
+				</div>
+			</div>
+			<div class="done-badge"><i class="ion-checkmark"></i></div>
+            <div class="changed-badge"><i class="ion-refresh"></i></div>
+		</li>
+	</ul>
+
+	<div class="not-enabled-hint">{{'NOT_ENABLED_YET'|translate}}</div>
+
+</div>

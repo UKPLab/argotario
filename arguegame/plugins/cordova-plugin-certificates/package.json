@@ -1,0 +1,25 @@
+{
+  "name": "cordova-plugin-certificates",
+  "version": "0.6.4-dev",
+  "description": "Cordova Certificate Plugin",
+  "cordova": {
+    "id": "cordova-plugin-certificates",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hypery2k/cordova-certificate-plugin.git"
+  },
+  "keywords": [
+    "cordova",
+    "certificates",
+    "ecosystem:cordova",
+    "cordova-android",
+    "cordova-ios"
+  ],
+  "author": "Martin Reinhardt",
+  "license": "MIT"
+}

@@ -1,0 +1,52 @@
+<style media="screen">
+#mturk-code{
+    padding: 15px 15px;
+    text-align: center;
+}
+#excuse {
+    display: table;
+    max-width: 400px;
+    margin: 10px auto;
+
+}
+
+#excuse p{
+    display: table-cell;
+    color:black;
+    max-width: 50%;
+    float: right;
+    margin:15px;
+    font-size:18px;
+    border: 2px solid red;
+    padding:10px;
+    border-radius: 5px;
+}
+
+#excuse img{
+    display: table-cell;
+    width: 25%;
+    float: left;
+}
+</style>
+
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="prepareHasFinished">
+    <arg-round-head>
+        <arg-round-title>
+           Thanks for playing!
+        </arg-round-title>
+    </arg-round-head>
+    <arg-round-explanation>
+        <h3 class="grey">Here is your code:</h3>
+    </arg-round-explanation>
+    <textarea readonly 
+            id="mturk-code"
+            id="input-field-{{$index}}"
+            class="input-field-{{component.type}}"
+            ng-model="gameData.code">
+    </textarea>
+
+</div>

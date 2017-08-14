@@ -1,0 +1,21 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-certificates": {
+            "PACKAGE_NAME": "me.raffael.mobile.argotario"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "me.raffael.mobile.argotario"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "me.raffael.mobile.argotario"
+        }
+    },
+    "dependent_plugins": {}
+}

@@ -1,0 +1,328 @@
+/** This file should only contain CSS definitions that either extend the set of Ionic CSS classes, or that overwrite existing Ionic CSS classes.
+
+
+/* Alternative to button-positive, etc.: round, opaque button */
+.button-round {
+    display: block;
+    margin: 0 auto;
+    background: inherit;
+    width: 250px;
+    border-radius: 30px;
+    font-size: 20px;
+    line-height: 42px;
+    box-sizing: border-box;
+}
+.button-round.button-bordered {
+    background-color: white;
+    border: 2px solid #0084ff;
+    color: #0084ff;
+    font-size: 20px;
+    line-height: 42px;
+}
+.button-round.button-bordered:hover {
+    color: #0084ff;
+}
+.button-round.button-bordered:active,
+.button-round.button-bordered.activated {
+    opacity: 0.65;
+    background: white;
+}
+
+/** Non-bordered: same dimensions as button-rounded, but without border */
+.button-round.button-non-bordered {
+    color: #0084ff;
+    font-size: 20px;
+    line-height: 42px;
+    background: transparent;
+    border: none;
+}
+.button-round.button-non-bordered:hover {
+    color: #0084ff;
+}
+.button-round.button-non-bordered:active,
+.button-round.button-non-bordered.activated {
+    background: transparent;
+    box-shadow: none;
+    opacity: 0.6;
+}
+
+.button-inline {
+    border: none;
+    min-height: none !important;
+    line-height: inherit !important;
+    font-size: inherit;
+    margin: 0 !important;
+    padding: 0 0px;
+    height: auto !important;
+    position: static;
+}
+
+.bar-footer.bar-continue {
+    background: white;
+    border-top: none;
+    padding: 15px 0 45px;
+}
+
+
+a[ng-click*=clickContinue] {
+    position: absolute;
+    left: 50%;
+    top: 140px;
+    margin-left: -110px;
+    width: 220px !important;
+    box-sizing: border-box;
+}
+/* Make modals have round corners on iPad, etc. */
+@media (min-width: 680px) {
+    .modal {
+        border-radius: 7px;
+    }
+    .modal .bar-header {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+    }
+    .modal .list {
+        padding-left:1px;
+    }
+    .bar-header .button {
+        font-weight: 500 !important;
+    }
+
+    .modal .pane {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        overflow: hidden !important;
+    }
+
+    .modal ion-tabs .tab-nav.tabs,
+    .modal ion-tabs .pane,
+    .modal ion-footer-bar {
+        overflow: hidden !important;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
+
+    .modal ion-content.scroll-content.ionic-scroll {
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+
+        overflow: hidden !important;
+    }
+
+    .modal ion-header-bar + ion-content {
+        border-top-left-radius: 0 !important;
+        border-top-right-radius: 0 !important;
+    }
+
+    .modal .item {
+        border-left-color: transparent;
+        border-right-color: transparent;
+    }
+
+    .modal .bar {
+        background-image:none;
+        /*border-bottom: 1px solid gray;*/
+    }
+
+    /*.modal-backdrop.active {
+        background-color: transparent;
+    }
+    body > div.modal-backdrop:not(.hide):nth-last-child(1) {
+        background-color: rgba(0,0,0,0.4) !important;
+    }*/
+
+    .scroll-bar-v {
+        width: 5px !important;
+        right: 4px !important;
+        bottom: 20px !important;
+    }
+    .scroll-bar-indicator,
+    .scroll-bar-indicator.scroll-bar-fade-out {
+        opacity: 1 !important;
+        width: 5px !important;
+    }
+
+    .modal-backdrop.active {
+        background: rgba(100,100,100,0.7);
+    }
+
+    /* Make background layer grayscale when modale is active */
+    body.modal-open #app-wrapper .pane {
+    }
+}
+
+/* Fix for modals on iPad in Portrait: make it 200% instead of 100% */
+.slide-in-up {
+    -webkit-transform: translate3d(0, 200%, 0);
+    transform: translate3d(0, 200%, 0);
+}
+
+ion-content.arg-gradient {
+    background: linear-gradient(white, #f0f0f0);
+}
+
+ion-header-bar.bar h1 + .button {
+    font-weight: 800 !important;
+}
+
+ion-slide.full-sized,
+.full-sized {
+    width: 100%;
+    height: 100%;
+    min-height: 100%;
+}
+
+/* Ionic Pop-ups */
+.popup-head {border-bottom: none; padding-bottom: 10px;}
+.popup-body {padding: 0px 15px 15px;}
+.popup-buttons {
+    padding: 0;
+    border-top: 1px solid #c5c5c5;
+}
+.popup {
+    width: 270px !important;
+    left: 50%;
+    margin-top: 0;
+    top: 30%;
+    text-align: center;
+    border-radius: 7px;
+    opacity: 0;
+    -webkit-transform: translate3d(0, 0, 0) scale(1.185);
+    -ms-transform: translate3d(0, 0, 0) scale(1.185);
+    transform: translate3d(0, 0, 0) scale(1.185);
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property: -moz-transform, opacity;
+    -ms-transition-property: -ms-transform, opacity;
+    -o-transition-property: -o-transform, opacity;
+    transition-property: transform, opacity;
+    color: #000;
+    border-radius: 7px !important;
+    /*}
+    .popup.modal-in {*/
+    opacity: 1;
+    -webkit-transition-duration: 400ms;
+    transition-duration: 400ms;
+    -webkit-transform: translate3d(0, 0, 0) scale(1);
+    -ms-transform: translate3d(0, 0, 0) scale(1);
+    transform: translate3d(0, 0, 0) scale(1);
+    background: rgba(250,250,250,0.95) !important;
+    overflow: hidden;
+}
+
+.popup-title {
+    font-weight: 500;
+    font-size: 18px;
+    text-align: center;
+}
+.popup-title + .modal-text {
+    margin-top: 5px;
+}
+.popup-buttons {
+    height: 44px;
+    min-height: 44px;
+    overflow: hidden;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+}
+.popup .button {
+    width: 100%;
+    padding: 0 5px;
+    height: 44px;
+    min-height: 40px;
+    font-size: 17px;
+    line-height: 10px;
+    text-align: center;
+    color: #007aff;
+    background: rgba(250,250,250,0.95) !important;
+    border: none;
+    display: block;
+    position: relative;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    cursor: pointer;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-right: 1px solid #d5d5d5;
+    padding: 0;
+    margin: 0;
+}
+.popup .button.activated {box-shadow: none; opacity: 0.8;}
+.popup .button:hover {color: #007aff;}
+.popup-sub-title {font-size: 14px;margin: 10px 0;}
+.popup .button:first-child {
+    border-radius: 0 0 0 7px;
+}
+.popup .button:last-child {
+    border-right: none;
+    border-radius: 0 0 7px 0;
+}
+.popup .button:first-child:last-child {
+    border-radius: 0 0 7px 7px;
+}
+.popup .button:last-of-type {
+    font-weight: 500;
+}
+
+
+
+
+
+
+.popup-container.popup-showing.active .popup {
+    pointer-events: auto !important;
+}
+
+ion-popover-view ion-content > button {
+    margin-left: 15px !important;
+}
+
+ion-popover-view.fit {
+  height: auto !important;
+}
+
+ion-popover-view.fit ion-content {
+  position: relative !important;
+}
+
+.platform-android ion-popover-view.fit {
+  margin-top: 10px !important;
+}
+
+
+
+
+.popup-body input[type=text] {
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 4px;
+    margin: 4px 0;
+}
+
+
+/* Pasted from Ionicons 1.5.2 (we are using 2.0.1, and they dropped the support for animations) */
+.ion-load-a:before, .ion-loading-a:before { content: ""; }
+.ion-load-b:before, .ion-loading-b:before { content: ""; }
+.ion-load-c:before, .ion-loading-c:before { content: ""; }
+.ion-load-d:before, .ion-loading-d:before { content: ""; }
+.ion-spin, .ion-loading-a, .ion-loading-b, .ion-loading-c, .ion-loading-d, .ion-looping, .ion-refreshing, .ion-ios7-reloading {
+    -webkit-animation: spin 2s infinite linear;
+}
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+
+    100% {
+        -webkit-transform: rotate(359deg);
+    }
+}
+.ion-loading-d:before, .ion-loading-d { display: inline-block; font-family: "Ionicons"; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; text-rendering: auto; line-height: 1; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }

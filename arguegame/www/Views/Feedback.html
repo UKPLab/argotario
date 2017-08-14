@@ -1,0 +1,44 @@
+<ion-modal-view ng-controller="FeedbackController">
+    <ion-header-bar>
+        <h1 class="title">{{'FEEDBACK'|translate}}</h1>
+        <button class="button button-clear button-positive" ng-click="closeFeedback();">{{'CLOSE'|translate}}</button>
+    </ion-header-bar>
+    <ion-content>
+
+        <p class="padding">
+            {{'FEEDBACK_TXT1'|translate}}
+            <br>
+            {{'FEEDBACK_TXT2'|translate}}
+        </p>
+        <ion-list>
+            <form name="feedbackForm">
+                <label class="item item-input item-select">
+                    <div class="input-label">{{'TYPE_OF_FEEDBACK'|translate}}</div>
+                    <select ng-model="feedback.type">
+                        <option selected>{{'BUG'|translate}}</option>
+                        <option>{{'GAMING'|translate}}</option>
+                        <option>{{'DEVICE_SUPPORT'|translate}}</option>
+                        <option>{{'SUGGESTION'|translate}}</option>
+                        <option>{{'GENERAL_FEEDBACK'|translate}}</option>
+                    </select>
+                </label>
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">{{'EMAIL_EXPL'|translate}}</span>
+                    <input type="text" placeholder="hello@you.com" ng-model="feedback.emailAddress">
+                </label>
+
+
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">{{'MESSAGE'|translate}}</span>
+                    <textarea ng-model="feedback.text" style="height: 100px; background: transparent;" id="arg-feedback-textarea" ng-change=onFeedbackTextChange();></textarea>
+                </label>
+            </form>
+        </ion-list>
+
+        <button class="button button-clear button-positive button-round" ng-click="clickSubmitFeedback();">
+          {{'SUBMIT_FEEDBACK'|translate}}
+        </button>
+
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,23 @@
+<arg-round-explanation ng-if="!prepareHasFinished">
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<arg-round-head ng-if="prepareHasFinished">
+
+    <arg-round-title>Pro or Contra?</arg-round-title>
+    <arg-round-explanation>
+        Only a part of the following argument is visible.
+        <br />Do you think this is a Pro or a Contra argument?
+    </arg-round-explanation>
+
+    <arg-topic-description model="gameData.topic"></arg-topic-description>
+
+    <arg-argument ng-if="gameData.argument" 
+                    model="gameData.argument"
+                    class="arg-argument-centered"
+                    show-only="gameData.indexOfShownComponent"></arg-argument>
+
+    <arg-pro-contra-choice selected-stance="gameData.argument.stance"></arg-pro-contra-choice>
+
+    <arg-article-link model="gameData.article" on-tap="openBrowser('{{gameData.article.permalink}}')" ng-if="gameData.article" style="margin-bottom: -20px;"></arg-article-link>
+</arg-round-head>

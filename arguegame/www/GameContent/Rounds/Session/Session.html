@@ -1,0 +1,225 @@
+<style media="screen">
+#session-avatar-table {
+    display: table;
+    max-width: 700px;
+    margin: 0px auto;
+    padding: 5px;
+}
+#session-avatar-one {
+    display: table-cell;
+    color:black;
+    max-width: 150px;
+    float: left;
+    margin:10px;
+    font-size:15px;
+    text-align: center;
+    padding:10px;
+    border-radius: 5px;
+}
+
+#session-avatar-two {
+    display: table-cell;
+    color:black;
+    float: center;
+    font-size:18px;
+    padding:10px;
+    line-height:10px;
+    vertical-align:middle;
+}
+
+#session-avatar-three {
+    display: table-cell;
+    color:black;
+    max-width: 150px;
+    float: right;
+    margin:10px;
+    font-size:15px;
+    text-align: center;
+    padding:10px;
+    border-radius: 5px;
+}
+
+#arg-session-description {
+    display: block;
+    position: relative;
+    margin: 10px auto;
+    color: #888;
+    box-sizing: border-box;
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 100%;
+}
+
+#arg-session-description .topic {
+    font-size:20px;
+    text-align: center;
+    border-top: 0px;
+}
+
+#arg-session-description .fallacy {
+    text-align: left;
+    border-top: 0px;
+    font-size: 15px;
+}
+
+#arg-session-description .ion-refresh {
+    text-align: left;
+    border-top: 0px;
+    font-size: 18px;
+    color: red;
+}
+
+.highlighted-fallacy {
+    border-radius: 5px;
+    background-color: lightgrey;
+    background-image: none;
+    border: 4px solid;
+    border-color: grey;
+}
+
+.indicator-bar{
+}
+
+.arg-session-mini-coin {
+    background: #ffed52;
+    color: #98521f;
+    display: inline-block;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    padding: 5px 4px 0px;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 10px;
+    border: 1px solid #fbb33f;
+    float: right;
+}
+
+.session-result-mini-coin {
+    background: #ffed52;
+    color: #98521f;
+    display: inline-block;
+    border-radius: 20px;
+    width: 20px;
+    height: 20px;
+    position: relative;
+    padding: 5px 4px 0px;
+    font-size: 11px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 10px;
+    border: 1px solid #fbb33f;
+}
+
+.session-result-points {
+    font-size: 16px;
+    color: royalblue;
+}
+
+.submitting {
+    vertical-align:top;
+}
+</style>
+
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="prepareHasFinished">
+
+<arg-round-head>
+
+    <arg-round-title>{{'BATTLE_MODE'|translate}}</arg-round-title>
+
+    <div id="session-avatar-table">
+        <p id="session-avatar-one">
+            <arg-avatar
+                size="50"
+                avatar="gameData.users[0].customData.avatar"
+                placeholder="Resources/Images/AvatarPlaceholder@2x.jpg"
+                ng-click="clickAvatar();">
+            </arg-avatar>
+            <span><strong>{{gameData.session.users[0]}}</strong></span>
+        </p>
+        <p id="session-avatar-two">{{'VS'|translate}}</p>
+        <p id="session-avatar-three">
+            <arg-avatar
+                size="50"
+                avatar="gameData.users[1].customData.avatar"
+                placeholder="Resources/Images/AvatarPlaceholder@2x.jpg"
+                ng-click="clickAvatar();">
+            </arg-avatar>
+            <span><strong>{{gameData.session.users[1] || "??"}}</strong></span>
+        </p>
+    </div>
+
+    <arg-round-explanation>
+        <p ng-if="gameData.active">
+          {{'ARGUE_AGAINST_ANOTHER_PLAYER'|translate}}
+        </p>
+        <p ng-if="!gameData.active && !gameData.gameOver">
+            {{'WAITING_FOR_THE_OTHER_PLAYER'|translate}}
+        </p>
+        <p ng-if="gameData.gameOver">
+            {{'THE_GAME_IS_OVER'|translate}}
+        </p>
+    </arg-round-explanation>
+
+    <div class="card" id="arg-session-description">
+        <div class="domain item item-divider item-icon-left"><i class="icon {{gameData.domain.icon}}"></i>
+            <h2>{{ gameData.domain.title[language] }}
+              <span ng-if="gameData.rounds!=null" class="right">{{'ROUNDS_TO_GO'|translate}}: {{gameData.rounds}}</span>
+            </h2>
+        </div>
+        <div ng-if="gameData.fallacy" class="fallacy item item-text-wrap" ng-click="nextFallacy()">
+            <i class="icon {{gameData.fallacy.icon}}"> {{ gameData.fallacy.title[language] }}</i>
+            <span class="grey smaller right">{{'TAP_TO_CHANGE'|translate}}</span>
+            <i class="icon ion-refresh right"></i>
+        </div>
+        <div ng-if="gameData.stance" class="item item-text-wrap arg-session-stance-{{gameData.stance}}">{{'YOUR_POSITION'|translate}} <strong>{{gameData.stance | uppercase}}</strong></div>
+        <div class="topic item item-text-wrap">&ldquo;{{ gameData.topic.title }}&rdquo;</div>
+    </div>
+</arg-round-head>
+
+<div ng-repeat="arg in gameData.args" class="list">
+    <div class="item item-divider indicator-bar" ng-if="arg.indicator.own || arg.indicator.opponent">
+        <p>
+            <span ng-if="arg.indicator.own" class="{{gameData.stance}}">{{'YOUR_TIP'|translate}} </span>
+            <i class="icon {{arg.indicator.own.icon}}"></i> {{arg.indicator.own.title[language]}}
+            <span ng-if="arg.point.own.set" style="font-family: Helvetica" class="arg-session-mini-coin">₳</span>
+        </p>
+        <p>
+            <span ng-if="arg.indicator.opponent" class="{{gameData.oppositeStance}}">{{OPPONENTS_TIP|translate}} </span>
+            <i class="icon {{arg.indicator.opponent.icon}}"></i> {{arg.indicator.opponent.title[language]}}
+                <span ng-if="arg.point.opponent.set" style="font-family: Helvetica" class="arg-session-mini-coin">₳</span>
+        </p>
+    </div>
+    <arg-argument model="arg" on-argument-tap="onArgumentTap(id,event)" class="arg-argument-centered"></arg-argument>
+</div>
+
+<ion-list ng-if="gameData.active && gameData.session.ticker>0">
+    <ion-item ng-if="!gameData.stance">
+        <arg-pro-contra-choice on-pro-tap=""
+                               on-contra-tap=""
+                               selected-stance="gameData.stance"></arg-pro-contra-choice>
+    </ion-item>
+    <ion-item ng-repeat="component in gameData.argument.components">
+
+        <label class="item-input item-floating-label">
+            <span ng-if="!gameData.submitting" class="input-label">{{'ARGUMENT'|translate}}</span>
+            <span ng-if="gameData.submitting" class="submitting pulse animated infinite">{{'SUBMITTING_YOUR_ARGUMENT'|translate}} </span>
+
+            <textarea id="arg-textarea-{{$index+1}}"
+                    placeholder="{{'YOUR_ARGUMENT'|translate}} ({{gameData.fallacy.title[language]}} | {{gameData.stance || 'neutral'}})"
+                    id="input-field-{{$index}}"
+                    class="input-field-{{component.type}}"
+                    ng-model="component.body"
+                    ng-blur="onComponentBlur(component,$index)"
+                    ng-change="onComponentChange(component,$index +1);"
+                    tabindex="{{$index +1}}"></textarea>
+        </label>
+    </ion-item>
+</ion-list>
+</div>

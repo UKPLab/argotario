@@ -1,0 +1,16 @@
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="prepareHasFinished">
+    <arg-round-head id="fallacyRecognitionBox">
+
+        <arg-round-title id="arg">{{'HARD'|translate}}</arg-round-title>
+        <arg-round-explanation>
+            {{'YOU_MASTERED_ALL_TYPES'|translate}}
+            <br/>{{'PROVE_YOUR_MASTERY'|translate}}
+            <br/>
+            <i>{{'YOU_CAN_PLAY_THIS_ROUND_OVER_AND_OVER'|translate}}</i>
+        </arg-round-explanation>
+    </arg-round-head>
+</div>

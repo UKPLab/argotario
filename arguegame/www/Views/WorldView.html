@@ -1,0 +1,52 @@
+<style>
+    .arg-world-background {
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background-size: cover;
+    }
+    .bonus-level{
+    	-webkit-border-radius: 20px;
+    	-moz-border-radius: 20px;
+    	border-radius: 20px;
+    	background-color: #fff;
+    	-webkit-box-shadow: 0 10px 51px rgba(28,152,152,.75);
+    	-moz-box-shadow: 0 10px 51px rgba(28,152,152,.75);
+    	box-shadow: 0 10px 51px rgba(28,152,152,.75);
+    	background: #ffbb46 linear-gradient(136deg, #ffbb46, #f9b23e 43%, #ffcf57 45%, #fff 57%, #fdcb52 59%, #ffe5b9) no-repeat;
+        -webkit-animation: goldenBadge 1s ease-in-out infinite alternate;
+    }
+    @-webkit-keyframes goldenBadge {
+        from {
+            background-position: 0px 0%;
+            -webkit-transfrom: translate3d(0,20px,2000px);
+            top: 80px;
+            box-shadow: 0px 35px 15px -5px rgba(10,115,225,0.25);
+        }
+        to {
+            background-position: 10px 0%;
+            -webkit-transfrom: translate3d(0,0,2000px);
+            top: 90px;
+            box-shadow: 0px 30px 15px -5px rgba(10,115,225,0.25);
+        }
+    }
+
+
+    .bonus-level .button-positive {
+        color: #6c7e42 !important;
+    }
+    .bonus-level h1 {
+        border-color: rgba(255,255,255,0.5);
+        color: white;
+    }
+
+    arg-world {
+        top: 50px;
+    }
+    #world-0 {
+        position: absolute;
+    }
+</style>
+
+<div style="position: relative;" class="full-sized">
+    <arg-world id="world-0" levels="data.levels" background="data.background"></arg-world>
+</div>

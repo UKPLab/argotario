@@ -1,0 +1,257 @@
+{
+    "worlds": [
+    {
+        "title":        "Dark Lands",
+        "id":           "DarkLands",
+        "enabled":      true,
+        "background":   "map2.png",
+        "levels": [
+
+        {
+            "id":               "FirstLevel2",
+            "title":			"Emotion!",
+            "icon":             "ion-heart",
+            "iconColor":        "dark",
+            "backgroundColor":  "white",
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.33,
+                "y":            0.87
+            },
+            "customView":		"NonskippableLevel",
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "UserStudyIntroduction"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "UserStudyFallacyIntroduction"
+                            }
+                        },
+                        {
+                            "id":           "r3",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "Lvl2Rnd2"
+                            }
+                        },
+                        {
+                            "id":           "r4",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "1"
+                            }
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "<",
+                                "difficulty": "1"
+                            }
+                        },
+                        {
+                            "id":			"r6",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": "1"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "SecondLevel2",
+            "title":			"Fishy!",
+            "icon":             "ion-merge",
+            "iconColor":        "dark",
+            "backgroundColor":  "#2bc295",
+            "requiresCompletion":[0],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.62,
+                "y":            0.80
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "FallacyRecognition",
+                            "parameters": {
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "ThirdLevel2",
+            "title":			"write!",
+            "icon":             "ion-edit",
+            "iconColor":        "dark",
+            "backgroundColor":  "yellow",
+            "requiresCompletion":[0,1],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.72,
+                "y":            0.55
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstFallacyComposingRound1"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"ComposeFallacy",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "2"
+                            }
+                        },
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstFallacyComposingRoundDone"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "FourthLevel2",
+            "title":			"comp/div!",
+            "icon":             "ion-aperture",
+            "iconColor":        "dark",
+            "backgroundColor":  "grey",
+            "requiresCompletion":[0,1,2],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.42,
+                "y":            0.40
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "3"
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": "3"
+                            }
+                        }
+                    ]
+        },
+        {
+            "id":               "FifthLevel2",
+            "title":			"Hot!",
+            "icon":             "ion-flame",
+            "iconColor":        "dark",
+            "backgroundColor":  "red",
+            "requiresCompletion":[0,1,2,3],
+            "isBonusLevel":     false,
+            "coordinates":      {
+                "x":            0.25,
+                "y":            0.40
+            },
+            "parameters":{
+            },
+
+            "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FirstHotFallacyRecognitionRound"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "operator": "<=",
+                                "difficulty": "3"
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition"
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition"
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"FallacyRecognition"
+                        },
+                        {      
+                            "id":           "r12",      
+                            "view":         "StaticContent",
+                            "parameters": {                 
+                                        "HTMLFile": "UserStudyFinish"
+                            }  
+                        },     
+                        {
+                            "id":           "r13",      
+                            "view":         "StaticContent",
+                            "parameters": {                 
+                                "HTMLFile": "UserStudyPrompt",
+                                "showCheckButton": false
+                            }
+                        }
+
+                    ]
+            }
+            ]
+        },
+        {
+            "title":        "Green Lands",   
+            "id":           "GreenWorld",    
+            "enabled":      false,
+            "background":   "map1.png",     
+            "levels": []
+        }
+    ]
+}

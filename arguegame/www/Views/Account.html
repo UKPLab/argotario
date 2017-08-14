@@ -1,0 +1,62 @@
+<!-- The Account view displays information about the current user's game progress, and provides access to other user's high-scores -->
+<ion-modal-view>
+    <ion-tabs class="tabs-stable tabs-icon-only" ng-controller="AccountController">
+
+        <ion-tab title="WeeklyHighscore" icon-on="ion-clock" icon-off="ion-clock">
+            <ion-header-bar class="bar-positive">
+                <h1 class="title">{{'WEEKLY_HIGHSCORE'|translate}}</h1>
+                <button class="button button-clear button-stale" ng-click="closeAccount();">{{'DONE'|translate}}</button>
+            </ion-header-bar>
+            <ion-content has-tabs="true">
+                <div class="padding grey">{{'HIGHSCORE_NEXT_RESET'|translate}}</div>
+                <ion-refresher pulling-text="{{'PULL_TO_REFRESH'|translate}}" pulling-icon="ion-arrow-down-c" on-refresh="clickRefresh()"></ion-refresher>
+
+                <ion-pane ng-if="!authenticated">
+                    <p class="padding">
+                        {{'HIGHSCORE_NEED_LOGGED_IN'|translate}}
+                        <a class="button button-clear button-positive button-inline" ng-click="openAuthentication();">
+                            Log in <i class="ion-ios-arrow-forward"></i>
+                        </a>
+                    </p>
+                </ion-pane>
+
+                <ion-list ng-if="weeklyHighscore.best && authenticated">
+                    <arg-user-sublist title="{{'BEST_USERS'|translate}}" users="weeklyHighscore.best" space="weeklyHighscore.space" show-ranking="true"></arg-user-sublist>
+                    <arg-user-sublist ng-if="weeklyHighscore.user" title="{{'BEST_USERS'|translate}}" users="[weeklyHighscore.user]" show-ranking="true"></arg-user-sublist>
+                </ion-list>
+
+                <div ng-if="!weeklyHighscore.best" class="padding">
+                    <p>{{'COULD_NOT_LOAD_HIGHSCORE'|translate}}</p>
+                </div>
+            </ion-content>
+        </ion-tab>
+
+        <ion-tab title="GlobalHighscore" icon-on="ion-ios-world" icon-off="ion-ios-world-outline">
+            <ion-header-bar class="bar-positive">
+                <h1 class="title">{{'GLOBAL_HIGHSCORE'|translate}}</h1>
+                <button class="button button-clear button-stale" ng-click="closeAccount();">{{'DONE'|translate}}</button>
+            </ion-header-bar>
+            <ion-content has-tabs="true">
+                <ion-refresher pulling-text="{{'PULL_TO_REFRESH'|translate}}" pulling-icon="ion-arrow-down-c" on-refresh="clickRefresh()"></ion-refresher>
+                <ion-pane ng-if="!authenticated">
+                    <p class="padding">
+                        {{'HIGHSCORE_NEED_LOGIN'|translate}}
+                        <a class="button button-clear button-positive button-inline" ng-click="openAuthentication();">
+                            Log in <i class="ion-ios-arrow-forward"></i>
+                        </a>
+                    </p>
+                </ion-pane>
+
+                <ion-list ng-if="globalHighscore.best && authenticated">
+                    <arg-user-sublist title="{{'BEST_USERS'|translate}}" users="globalHighscore.best" space="globalHighscore.space" show-ranking="true"></arg-user-sublist>
+                    <arg-user-sublist title="{{'REST'|translate}}" ng-if="globalHighscore.user" users="[globalHighscore.user]" show-ranking="true"></arg-user-sublist>
+                </ion-list>
+
+                <div ng-if="!globalHighscore.best" class="padding">
+                    <p>{{'COULD_NOT_LOAD_HIGHSCORE'|translate}}</p>
+                </div>
+            </ion-content>
+        </ion-tab>
+
+    </ion-tabs>
+</ion-modal-view>

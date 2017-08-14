@@ -1,0 +1,57 @@
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="prepareHasFinished">
+    <arg-round-head id="fallacyRecognitionBox">
+
+        <arg-round-title id="arg">{{'FALLACY_OR_NOT'|translate}}?</arg-round-title>
+
+        <arg-round-notification>
+            <i class="icon ion-flame" ng-if="!inputCorrectnessVerifiable()">hot</i>
+        </arg-round-notification>
+        <arg-round-explanation ng-if="!gameData.contextArguments">
+            {{'FALLACY_OR_NOT_EXPL1'|translate}}
+            <br />{{'FALLACY_OR_NOT_EXPL2'|translate}}
+        </arg-round-explanation>
+
+        <arg-round-explanation ng-if="gameData.contextArguments">
+            {{'FALLACY_OR_NOT_EXPL3'|translate}}<br />
+            {{'FALLACY_OR_NOT_EXPL4'|translate}}
+        </arg-round-explanation>
+
+
+        <arg-session-description topic="gameData.topic" domain="gameData.domain"></arg-session-description>
+        <div ng-if="gameData.contextArguments" ng-repeat="arg in gameData.contextArguments" class="list">
+            <arg-argument model="arg" class="arg-argument-centered"></arg-argument>
+        </div>
+
+        <arg-argument ng-if="gameData.argument" model="gameData.argument"
+                class="arg-argument-centered" ng-class="{'arg-focus':gameData.contextArguments}"></arg-argument>
+
+        <div ng-if=show_solution_explanation>
+        <arg-round-notification ng-if="!inputCorrectnessVerifiable()">
+            {{'FALLACY_OR_NOT_EXPL5'|translate}}
+        </arg-round-notification>
+
+        <div id="fallacy-solution-divider">
+            <div id="fallacy-solution-divider-left"><img src="Resources/Images/Guy-Hint@2x.png" id="intro-dude" style="" /></div>
+            <div id="fallacy-solution-divider-right">
+                <arg-fallacy-solution class="arg-neutral"
+                fallacy="fallacyForId(gameData.argument.out_fallacyType) || fallacyForId(gameData.claimedFallacy)"
+                explanation="(!inputCorrectnessVerifiable() || fallacyClaimedIsTrue()) ? gameData.argument.explanation : null">
+                </arg-fallacy-solution>
+            </div>
+        </div>
+
+        </div>
+
+        <arg-fallacy-choice ng-if="!show_solution_explanation"
+                            model="gameData.allFallacies"
+                            highlighted-correctly="gameData.highlightedCorrectlyIndexes"
+                            highlighted-wrongly="gameData.highlightedWronglyIndexes"
+                            selected-fallacy="gameData.argument.fallacyId"></arg-fallacy-choice>
+
+        <arg-article-link model="gameData.article" on-tap="openBrowser('{{gameData.article.permalink}}')" ng-if="gameData.article" style="margin-bottom: -20px;"></arg-article-link>
+    </arg-round-head>
+</div>

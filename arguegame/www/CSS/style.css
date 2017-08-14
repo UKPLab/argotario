@@ -1,0 +1,459 @@
+
+/* Somehow we need to overwrite the URLs of the ionicons font to make them work ... */
+/*@font-face {
+    font-family: "Ionicons" !important;
+    src: url("/lib/ionic/fonts/ionicons.eot?v=2.0.0") !important;
+    src: url("/lib/ionic/fonts/ionicons.eot?v=2.0.0#iefix") format("embedded-opentype"), url("/lib/ionic/fonts/ionicons.ttf?v=2.0.0") format("truetype"), url("/lib/ionic/fonts/ionicons.woff?v=2.0.0") format("woff"), url("/lib/ionic/fonts/ionicons.svg?v=2.0.0#Ionicons") format("svg") !important;
+    font-weight: normal !important;
+    font-style: normal !important;
+}*/
+
+body {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    -webkit-text-size-adjust: none;
+}
+
+#potw-modal {
+    max-width: 400px;
+    max-height: 400px;
+    width: 100%;
+    height: 100%;
+    padding: 20px 5px;
+    font-weight: bold;
+    position: relative;
+}
+
+#potw {
+    font-size: 45px;
+    margin:30px auto;
+}
+
+#app-wrapper {
+    height: 100%;
+    min-height: 100%;
+    -webkit-transform: translate3d(0,0,0);
+}
+
+.marked {
+    font-size: 20px;
+    background-color: blue !important;
+}
+
+.pvp-intro-pic {
+    display: block;
+    max-width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#pvp-intro-pic {
+    max-width: 700px;
+    margin: 0px auto;
+    padding: 5px;
+}
+#pvp-intro-pic img{
+    color:black;
+    max-width: 80%;
+    font-size:15px;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+#pvp-intro-pic p {
+    font-size:23px;
+    padding:10px 10px;
+    text-align: center;
+}
+
+#pvp-intro-pic i {
+    font-size:15px;
+    text-align: center;
+    color:grey;
+}
+
+body.modal-open #app-wrapper {
+}
+
+.grey {
+    color: grey; !important;
+}
+
+.pro {
+    color:#116bff !important;
+}
+
+.contra {
+    color:#ff2113 !important;
+}
+
+.big {
+    font-size:25px !important;
+}
+
+.win {
+    font-size:25px !important;
+    color:#2ECC40 !important;
+}
+
+
+
+.lose {
+    font-size:25px !important;
+    color:#FF4136 !important;
+}
+
+.draw {
+    font-size:25px !important;
+    color:#FFDC00 !important;
+}
+
+.incomplete {
+    color: red;
+}
+
+.complete {
+    color: grey !important;
+}
+
+.reward-money {
+    float: right;
+}
+
+.centered-block {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.important{
+    font-size:18px;
+    color: red;
+}
+
+.centered-inline-block {
+    margin-left: auto;
+    margin-right: auto;
+    display: inline-block;
+}
+
+.centered {
+    text-align: center;
+}
+
+.bigger {
+    font-size: 120%;
+    line-height: 1.4em;
+}
+
+.smaller {
+    font-size: 80%;
+    line-height: 1.4em;
+}
+
+.constrained-width {
+    max-width: 400px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+[ng-click] {
+    cursor: pointer;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.right { float: right; }
+.left { float: left; }
+
+.modal.custom-modal {
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    background-color: transparent;
+}
+.inline-modal.modal-backdrop .modal.custom-modal {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+}
+.inline-modal.modal-backdrop {
+    opacity: 0;
+    -webkit-transition: opacity 200ms ease-out 900ms;
+    display: none;
+}
+.inline-modal.modal-backdrop.active {
+    background: linear-gradient(rgba(0,0,0,0),rgba(255,255,255,0.4));
+    opacity: 1;
+    display: block;
+}
+
+/* Makes sure that the success/failure modals have rounded corners in the bottom corners */
+ion-slide .modal-backdrop {
+    bottom: 7px !important;
+    overflow: hidden;
+    height: auto !important;
+}
+
+.modal.bounceInUp,
+.modal.bounceOutDown {
+    bottom: -80px !important; /* Hack required for the bounce effect */
+}
+
+
+.arg-round-modal {
+    background-image: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.1));
+}
+#arg-success-modal,
+#arg-done-modal,
+#arg-failure-modal {
+    display: block;
+    width: 100%;
+    height: 220px;
+    background: white;
+    position: fixed;
+    padding: 10px;
+    z-index: 1000;
+    bottom: 0;
+    padding-bottom: 100px;
+    left: 0%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+    color: gray;
+    overflow: visible;
+    box-sizing: border-box;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+
+#arg-complete-modal {
+    display: block;
+    width: 100%;
+    height: 280px;
+    background: white;
+    position: fixed;
+    padding: 10px;
+    z-index: 1000;
+    bottom: 0;
+    padding-bottom: 100px;
+    left: 0%;
+    text-align: center;
+    line-height: 20px;
+    font-size: 20px;
+    color: gray;
+    overflow: visible;
+    box-sizing: border-box;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.arg-vaporizing-point {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    display: block;
+    width: 100px;
+    margin-left: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 40px;
+    opacity: 1;
+}
+
+.arg-continue {
+    position: absolute;
+    bottom: 10px;
+}
+
+.bar .button {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+#arg-continue-bar .button-round {
+    width: 220px;
+}
+#arg-continue-bar .arg-report-button,
+#arg-failure-modal .arg-report-button,
+#arg-done-modal .arg-report-button,
+#arg-success-modal .arg-report-button {
+    position: absolute;
+    left: 10px;
+    font-size: 30px;
+}
+.arg-report-button i {
+    font-size: inherit !important;
+}
+
+.arg-help-button i {
+    position: absolute;
+    right: 10px;
+    font-size: 30px;
+}
+
+/* Debug Directive */
+debug {
+	display: inline-block;
+	background: #fbf4c3 url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyRpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoTWFjaW50b3NoKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDpEMjYwMzc3OThEM0QxMUU0QTFBNUFCODczNjM4ODU0MSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDpEMjYwMzc3QThEM0QxMUU0QTFBNUFCODczNjM4ODU0MSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkQyNjAzNzc3OEQzRDExRTRBMUE1QUI4NzM2Mzg4NTQxIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOkQyNjAzNzc4OEQzRDExRTRBMUE1QUI4NzM2Mzg4NTQxIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+lonfzwAAANhQTFRF/8UA9e+7/64B/////7oB/L5E/7QB/68H/7sB/70A/68L/7MC//jf9+Of9ueo//LE996U/7wA/b0/9+Gc+shc9uan+8NO9uep+NmG/78A9+CY/rQf/68O/84p/sQA+N2O/74A/84m//fc+79E9+Wi+8FK/8oW+sZX/8wh//bX+8BJ/+2u/7AW/91p/+qk//HC//33/bw//80g/+eX/8sY9uWk//bZ//bY/L5B+sZY+8RT+8RS/8YB///9/88q/9M8//PM/8wf/99x/+ys/9ti/9pd/8gM/b5B9eu/iAAAANJJREFUeNpcztd6gkAQBeAjs1RFQSwgCFjTi6ZHUzXJ+79Rdtk1AebmzPzfuRg01IRxHB52qBwmUZQMa9hjAOtVse+Aj9Ov4BETyJ7KODexPmlNYN6VcGPhjGgH6/kfXQ14J+oAmvuHAwu4JLoBrMEBA17EJ9EXDy1QeOrz641ozMNfSBw1xTvfL9dbkc1RgTNbHGhNi7B1gZ5RHBi/yjQ8jl1ZXF51bmW120CminuiC1XN8JPL9ePh/lhu+QrnKWqTOtBZHdkj2rqpVcbU278CDABiSA0phdT/RgAAAABJRU5ErkJggg==) no-repeat 4px 4px;
+	background-size: 10px;
+	font: normal 10px/1.5em Consolas, Menlo, Monaco, Lucida Console, Liberation Mono !important;
+	color: #444;
+	padding: 2px 5px 2px 19px;
+	border-radius: 2px;
+}
+
+
+/* Animated Coins */
+.arg-coin {
+/*    width: 40px;
+    height: 40px;
+    background: yellow;
+    border-radius: 20px;
+    box-shadow: 0 4px 0 0 #a19a63;
+    position: absolute;
+    z-index:1000;
+*/}
+
+
+/* Arg Countdown */
+.arg-countdown-pulsating {
+    -webkit-animation: arg-countdown-pulsating-animation 1s ease-in-out 0s infinite alternate;
+}
+
+
+
+.bar arg-level-progress-indicator {
+    position: absolute;
+    left: 50%;
+    top: 10px;
+}
+.bar arg-level-progress-indicator + .button:last-child {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    bottom: 5px;
+}
+
+@-webkit-keyframes 'arg-countdown-pulsating-animation' {
+    0% {
+        height: 100px;
+    }
+    100% {
+        height: 20px;
+    }
+}
+
+@-webkit-keyframes 'drop-bounce' {
+    0%   { -webkit-transform: translate3d(0,000px,0); animation-timing-function:ease-in;  }
+    37%  { -webkit-transform: translate3d(0,500px,0); animation-timing-function:ease-out; }
+    55%  { -webkit-transform: translate3d(0,375px,0); animation-timing-function:ease-in;  }
+    73%  { -webkit-transform: translate3d(0,500px,0); animation-timing-function:ease-out; }
+    82%  { -webkit-transform: translate3d(0,465px,0); animation-timing-function:ease-in;  }
+    91%  { -webkit-transform: translate3d(0,500px,0); animation-timing-function:ease-out; }
+    96%  { -webkit-transform: translate3d(0,490px,0); animation-timing-function:ease-in;  }
+    100% { -webkit-transform: translate3d(0,000px,0); }
+}
+
+#arg-account-display {
+    position: absolute;
+    right: 100px;
+    top: 2px;
+    z-index: 9999;
+}
+
+
+.arg-level-description {
+    width: 300px;
+    margin: 10px autp;
+    height: 200px;
+    border-radius: 10px;
+    background: white;
+    display: block;
+    position: absolute;
+    top: 80px;
+    left: 50%;
+    margin-left: -150px;
+    color: #444;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.3em;
+    box-sizing: border-box;
+    padding: 15px 10px;
+    overflow: hidden;
+    -webkit-transform: translate3d(0,0,2000px);
+    box-shadow: 0px 30px 15px -5px rgba(10,115,225,0.25);
+    -webkit-animation: hovering-level 2s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes 'hovering-level' {
+    from {
+        -webkit-transfrom: translate3d(0,20px,2000px);
+        top: 80px;
+        box-shadow: 0px 35px 15px -5px rgba(10,115,225,0.25);
+    }
+    to {
+        -webkit-transfrom: translate3d(0,0,2000px);
+        top: 90px;
+        box-shadow: 0px 30px 15px -5px rgba(10,115,225,0.25);
+    }
+}
+
+.arg-level-description h1, .arg-level-description p {
+    font-size: 14px;
+}
+.arg-level-description p {
+    padding: 10px 0;
+}
+.arg-level-description h1 {
+    border-bottom: 3px solid rgba(0,0,0,0.1);
+    width: 100%;
+    line-height: 16px;
+    color: #666;
+    font-size: 23px;
+    text-transform: uppercase;
+    height: 30px;
+    width: 300px;
+    margin: 0 -10px;
+    font-weight: bolder;
+    background: rgba(0,0,0,0.03);
+}
+.arg-level-description button {
+    display: block;
+    margin: 10px auto 0;
+    font-weight: bolder;
+}
+
+.completed .arg-level-description {
+    opacity: 0.3;
+}
+
+.arg-round-modal arg-stack-of-coins  {
+    position: absolute;
+    left: 50%;
+    margin-left: -130px;
+    top: 80px;
+}
+
+
+
+ion-footer-bar arg-countdown {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    right: 0;
+}
+
+ion-header-bar arg-account-display#mainAccount {
+    position: absolute;
+    top: 11px;
+    right: 10px;
+}

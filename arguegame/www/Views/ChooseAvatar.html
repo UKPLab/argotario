@@ -1,0 +1,35 @@
+<style>
+    .item-choose-avatar {
+        height: 168px;
+        padding: 20px 0;
+    }
+    .item-choose-avatar img {
+        display: block;
+        margin: 0 auto;
+        width: 128px !important;
+        height: 128px !important;
+        border-radius: 64px;
+        border: 3px solid #ddd;
+        padding: 2px;
+        box-sizing: border-box;
+    }
+    .item-choose-avatar.selected img {
+        border-color: #0084ff;
+    }
+</style>
+<ion-modal-view ng-controller="ChooseAvatarController">
+
+    <ion-header-bar class="bar-stable">
+        <h1 class="title">{{'CHOOSE_YOUR_AVATAR'|translate}}</h1>
+        <button class="button button-clear button-positive" ng-click="chooseAvatarModal.hide();">{{'DONE'|translate}}</button>
+    </ion-header-bar>
+
+    <ion-content>
+        <ion-list>
+            <ion-item ng-repeat="avatar in avatars" class="item-choose-avatar" ng-class="{'selected':currentAvatar==avatar}">
+                <img src="Resources/Images/{{avatar}}@2x.png" ng-click="clickAvatar(avatar);"></img>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+
+</ion-modal-view>

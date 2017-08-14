@@ -1,0 +1,103 @@
+<style media="screen">
+    .arg-world-slide {
+        padding: 0 0;
+        -webkit-perspective: 800;
+    }
+
+    .arg-world-slide h1 {
+        color: #ccc;
+        position: absolute;
+        bottom: 12%;
+        width: 300px;
+        left: 50%;
+        margin-left: -150px;
+        text-align: center;
+    }
+
+    .slider {
+        height: 100%;
+    }
+
+    .ion-content  {
+        -webkit-perspective: 1000;
+    }
+
+    #arg-world-header-bar {
+        border: none !important;
+        background: none !important;
+    }
+
+    arg-world {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+    }
+
+    .arg-golden-level {
+        background: #ffbb46 linear-gradient(135deg, #fbd53f 0%,#fbd53f 26%,#ffd38c 50%,#ffbb46 51%,#ffbb46 60%,#fbd53f 100%) !important;
+        -w1ebkit-animation: goldenBadge 2s linear infinite;
+    }
+    .arg-golden-level .arg-level-body {
+        background: transparent;
+    }
+
+    @-webkit-keyframes goldenBadge {
+        from {
+            background-position: -100px 0;
+        }
+        to {
+            background-position: 100px 0;
+        }
+    }
+</style>
+
+<!-- This view contains general User Interface elements, but no World or Level related contents -->
+<ion-pane ng-controller="RootController">
+    <ion-header-bar class="bar-stale" id="arg-world-header-bar" style="">
+        <button class="button button-clear button-positive" ng-click="authenticated ? openUserProfile() : openAuthentication();">
+            <!-- Show a spinner if the RootController has started the authentication -->
+            <span ng-if="authenticating">
+                <i class="icon ion-loading-d"></i>
+            </span>
+            <span ng-if="!authenticating && authenticated">
+                <i class="ion-ios-body"></i> {{ user.user}}
+            </span>
+            <span ng-if="!authenticating && !authenticated">
+                <i class="ion-log-in"></i>
+                {{'SIGN_IN'|translate}}
+            </span>
+        </button>
+        <button class="button button-clear button-stale" style="margin-left: 20px" ng-click="openFeedback();" ng-hide="authenticating">
+            {{'FEEDBACK'|translate}}
+        </button>
+        <!--
+        <h1 class="title">Argotario</h1>
+        -->
+
+        <arg-account-display points="user.customData.points"
+                             currency="currency"
+                             secondary-currency="A"
+                             ranking="userRanking"
+                             ng-click="openAccount()"
+                             ng-hide="authenticating"
+                             id="mainAccount" />
+    </ion-header-bar>
+
+    <!--- SLIDER ZUM WECHSEL ZWISCHEN DEN WELTEN -->
+    <ion-slide-box ng-if="worlds" pager-click="clickSwitchWorld(index, true)" on-slide-changed="clickSwitchWorld($index, false);" delegate-handle="WorldsSlideBox">
+
+        <ion-slide class="arg-world-slide" ng-repeat="world in worlds">
+            <div class="{{ world.customSlideClass }}" ng-controller="WorldController">
+                <h1>{{ world.title }}</h1>
+
+                <arg-world model="world" completed-levels="completedLevels"
+                                         unlocked-levels="unlockedLevels"
+                                         on-tap-level="authenticated ? clickStartLevel(level,index) : openAuthentication();"
+                                         on-tap-locked-level="clickLockedLevel(level,index);"
+                                         on-tap-disabled-level="clickDisabledLevel(level,index);"
+                                         completed="world.completed">
+                </arg-world>
+            </div>
+        </ion-slide>
+    </ion-slide-box>
+</ion-pane>

@@ -1,0 +1,8 @@
+<div id="arg-done-modal" class="arg-round-modal">
+    <div class="padding">
+        <h1>{{ acceptedInputMessage }}</h1>
+        <arg-stack-of-coins coins="{{visibleCoins}}"></arg-stack-of-coins>
+        <p><span ng-bind="shownPoints" class="arg-shown-points"></span> {{'COINS_FOR_YOU'|translate}}</p>
+        <span class="arg-vaporizing-point">+{{ shownPoints }}</span>
+    </div>
+</div>

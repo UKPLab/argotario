@@ -1,0 +1,11 @@
+<arg-round-explanation ng-if="!prepareHasFinished" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="prepareHasFinished">
+    <arg-round-title>{{'WHICH_FALLACIES_DO_EXIST' | translate}}</arg-round-title>
+    <arg-round-explanation>{{'YOU_SHOULD_KNOW_THE_FOLLOWING' | translate}}</arg-round-explanation>
+    <div class="list card" ng-repeat="fallacy in $parent.gameData.fallacies | orderBy:'-difficulty'">
+        <arg-fallacy model="fallacy"></arg-fallacy>
+    </div>
+</div>

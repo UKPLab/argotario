@@ -1,0 +1,65 @@
+<!-- The UserProfile displays content of the current user -->
+<ion-modal-view ng-controller="UserProfileController">
+    <ion-header-bar class="bar-positive">
+        <button class="button button-clear button-energized" ng-click="clickLogout();" ng-if="authenticated">
+          {{'LOG_OUT'|translate}}
+        </button>
+        <h1 class="title">
+            <span ng-if="authenticated">
+                {{'HI'|translate}} {{ profileUser.user}}!
+            </span>
+            <span ng-if="!authenticated">
+                {{'YOUR_PROFILE'|translate}}
+            </span>
+        </h1>
+        <button class="button button-clear button-stale" ng-click="closeUserProfile();">{{'DONE'|translate}}</button>
+    </ion-header-bar>
+    <ion-content>
+
+        <div ng-if="!authenticated">
+            <p class="padding">
+                {{'YOU_ARE_NOT_LOGGED_IN'|translate}}
+            </p>
+            <button class="button button-clear button-positive center padding-top" style="text-align: center; width: 100%;" ng-click="openAuthentication();">
+                {{'SIGN_IN'|translate}}
+            </button>
+        </div>
+
+        <div ng-if="authenticated">
+            <ng-include src="'Views/Profile.html'"></ng-include>
+
+            <ion-list>
+                <ion-item class="item-divider">{{'MORE'|translate}}</ion-item>
+
+                <ion-item class="item-avatar item-icon-right" ng-click="clickRemoveLocalData();">
+                    <i class="icon avatar ion-trash-a" style="left: 20px;"></i>
+                    <h2 translate="REMOVE_LOCAL_DATA"></h2>
+                    <p translate="REMOVE_LOCAL_DATA_EXP"></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <!-- changing the language is deactivated due to technical reasons
+                <ion-item class="item-avatar item-icon-right" ng-click="openLanguage();">
+                    <i class="icon avatar ion-earth" style="left: 20px;"></i>
+                    <h2 translate="CHANGE_LANGUAGE"></h2>
+                    <p translate="CHANGE_LANGUAGE_EXPL"></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item> -->
+
+                <ion-item class="item-avatar item-icon-right" ng-click="openFeedback();">
+                    <i class="icon avatar ion-ios-email" style="left: 20px;"></i>
+                    <h2 translate="FEEDBACK"></h2>
+                    <p translate="FEEDBACK_EXPL"></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+
+                <ion-item class="item-avatar item-icon-right" ng-click="openAcknowledgements();">
+                    <i class="icon avatar ion-ios-heart" style="left: 20px;"></i>
+                    <h2 translate="ACKNOWLEDGEMENTS"></h2>
+                    <p translate="ACKNOWLEDGEMENTS_TXT"></p>
+                    <i class="icon ion-chevron-right icon-accessory"></i>
+                </ion-item>
+            </ion-list>
+        </div>
+    </ion-content>
+</ion-modal>

@@ -1,0 +1,170 @@
+<style media="screen">
+
+.arg-components {
+    border: 2px solid transparent;
+    border-radius: 14px;
+    -webkit-transition: border-color 1s ease-out;
+}
+.arg-components p {
+    margin: 2px;
+    background: blue;
+    -webkit-transition: background 1s ease-out;
+}
+.arg-components span {
+    display: block;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.as-sortable-item.as-first,
+.as-sortable-placeholder.as-first {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.as-sortable-item.as-last,
+.as-sortable-placeholder.as-last {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.as-sortable-placeholder {
+    background: #ddf2f5 !important;
+    border: 2px dashed blue;
+}
+
+.as-sortable-drag {
+    opacity: 0.7;
+    border-radius: 4px;
+}
+
+.arg-components-marked-as-correct {
+    border-color: #34bb45;
+}
+
+.arg-components-marked-as-incorrect {
+    border-color: #c14b0f;
+}
+
+.arg-components-marked-as-correct p {
+    background: #34bb45;
+}
+.arg-components-marked-as-incorrect p {
+    background: #c14b0f;
+}
+
+</style>
+
+<arg-round-explanation ng-if="gameData.loading" >
+    <h1 class="ion-loading-d ion-load-d"> </h1>
+</arg-round-explanation>
+
+<div ng-if="!gameData.loading">
+
+<arg-round-head>
+
+    <arg-round-explanation>
+        Read the following statement
+        <span ng-show="gameData.domain">(<strong>{{ gameData.domain.title[language] }}</strong>)</span>
+        and compose a new argument!
+    </arg-round-explanation>
+
+    <arg-topic-description model="gameData.topic"></arg-topic-description>
+    <arg-article-link model="gameData.article" on-tap="openBrowser('{{ gameData.article.permalink }}')" ng-if="gameData.article" style="margin-bottom: 20px; border-bottom: 1px solid gray;"></arg-article-link>
+
+    <button class="button button-clear button-positive ui-reorder-button" ng-click="showReorder=!showReorder;" ng-hide="showDelete">
+        <span ng-show="!showReorder && !showDelete">Reorder</span>
+        <span ng-show="showReorder && !showDelete">Done Reordering</span>
+    </button>
+
+    <button class="button button-clear button-assertive ui-reorder-button" 
+            ng-click="showDelete=!showDelete;" 
+            ng-hide="showReorder">
+        <span ng-show="!showDelete && !showReorder">Remove Components</span>
+        <span ng-show="showDelete && !showReorder">Done Removing</span>
+    </button>
+
+    <button class="button button-clear button-positive pull-right" ng-click="showHelp=!showHelp" style="float: right;">
+        Help
+    </button>
+</arg-round-head>
+
+<arg-round-head ng-show="showHelp">
+    <arg-round-title>Composing an argument isn't hard!</arg-round-title>
+    <arg-round-explanation>
+        A good argument consists of a claim and some reasons. 
+        The claim is your statement with regards to the debating topic. 
+        With the reasons, you justify your claim by facts, common knowledge, or logical steps, that imply your claim.
+    </arg-round-explanation>
+    <arg-round-explanation>
+        Use the form to at first compose your claim in one sentence. 
+        Afterwards add one or more reasons to justify what you are saying.
+    </arg-round-explanation>
+    <arg-round-explanation>
+        <button class="button button-positive button-clear" 
+                ng-click="showHelp=!showHelp">
+
+            Ok, let's give it a try!
+        </button>
+    </arg-round-explanation>
+</arg-round-head>
+
+<ion-list 
+        show-delete="showDelete" 
+        show-reorder="showReorder" 
+        can-reorder="true">
+
+    <ion-item ng-if="!showReorder">
+        <arg-pro-contra-choice on-pro-tap=""
+                               on-contra-tap=""
+                               selected-stance="gameData.argument.stance"></arg-pro-contra-choice>
+     </ion-item>
+
+    <ion-item can-swipe="component.type!='claim';" 
+              ng-repeat="component in gameData.argument.components">
+
+        <ion-delete-button 
+                class="ion-minus-circled" 
+                ng-click="onComponentDelete(component,$index);" 
+                ng-hide="component.type=='claim';">
+        </ion-delete-button>
+
+        <label class="item-input item-floating-label">
+            <span class="input-label">{{ termForComponentType(component.type) | capitalize }}</span>
+
+            <textarea id="arg-textarea-{{$index+1}}"
+                      placeholder="Your {{ termForComponentType(component.type) | capitalize}}"
+                      id="input-field-{{$index}}"
+                      class="input-field-{{ component.type }}"
+                      ng-model="component.body"
+                      ng-blur="onComponentBlur(component,$index)"
+                      ng-change="onComponentChange(component,$index +1);"
+                      tabindex="{{$index +1}}"></textarea>
+        </label>
+
+        <ion-reorder-button 
+                class="ion-navicon" 
+                on-reorder="onComponentSwap(component, $fromIndex, $toIndex)">
+        </ion-reorder-button>
+        <ion-option-button 
+                class="button-assertive" 
+                ng-click="onComponentDelete(component,$index);" 
+                ng-hide="component.type=='claim';">
+            Delete
+        </ion-option-button>
+    </ion-item>
+</ion-list>
+
+<span ng-repeat ="type in addableComponentTypes"  
+      ng-class="{'pale':(showDelete || showReorder)}" 
+      class="padding">
+    <button class="button button-clear button-positive" 
+            ng-click="addComponent(type);">
+        Add another {{ termForComponentType(type) | capitalize }}
+    </button>
+</span>
+
+</div>

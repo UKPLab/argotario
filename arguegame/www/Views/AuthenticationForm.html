@@ -1,0 +1,25 @@
+<ion-list ng-hide="authenticated" ng-controller="AuthenticationFormController">
+
+    <label class="item item-input">
+        <span class="input-label">{{'NICKNAME'|translate}}</span>
+        <input type="text" placeholder="Your Nickname" ng-model="username">
+    </label>
+
+    <label class="item item-input">
+        <span class="input-label">{{'PASSWORD'|translate}}</span>
+        <input type="password" placeholder="Your Password" ng-model="password">
+    </label>
+
+    <!--<ion-toggle ng-model="stayLoggedIn" toggle-class="toggle-positive">Stay logged in</ion-toggle>-->
+
+    <ion-item>
+        <button class="button button-block button-positive activated" ng-click="clickSignIn(username,password);">
+          {{'SIGN_IN'|translate}}
+        </button>
+    </ion-item>
+
+</ion-list>
+<p ng-show="authenticated" class="padding">
+    {{'YOU_ARE_LOGGED_IN_AS'|translate}} <strong>{{ user.username }}</strong>.
+    <button class="button-clear button-positive" ng-click="logOut();">{{'LOG_OUT'|translate}}</button>
+</p>
