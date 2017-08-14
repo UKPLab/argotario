@@ -1,0 +1,4 @@
+#!/bin/bash
+#shift
+#echo $@
+java -Xms2G -jar MACE.jar $@

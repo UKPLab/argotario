@@ -1,0 +1,124 @@
+{
+    "worlds": [
+        {
+            "title":        "Green World",
+            "id":           "GreenWorld",
+            "enabled":      true,
+            "background":   "map1.png",
+            "levels": [
+                {
+                    "id":               "PvPIntro",
+                    "title":			"Intro!",
+                    "icon":             "ion-information",
+                    "iconColor":        "dark",
+                    "backgroundColor":  "#2bc295",
+                    "isBonusLevel":     false,
+                    "coordinates":      {
+                        "x":            0.33,
+                        "y":            0.87
+                    },
+                    "customView":		"NonskippableLevel",
+                    "parameters":{
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "intro",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "PvPIntro"
+                            }
+                        },
+                        {
+                            "id":           "write",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPWrite"  
+                            }
+                        },
+                        {
+                            "id":           "indicate",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPIndicate"  
+                            }
+                        },
+                        {
+                            "id":           "result",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPResult"  
+                            }
+                        },
+                        {
+                            "id":           "judge",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPJudge"  
+                            }
+                        }
+
+                    ]
+                },
+                {
+                    "id":               "PvP",
+                    "title":			"Argue!",
+                    "completable":      false,
+                    "icon":             "ion-ios-game-controller-a-outline",
+                    "iconColor":        "dark",
+                    "requiresCompletion":[0],
+                    "backgroundColor":  "white",
+                    "isBonusLevel":     false,
+                    "coordinates":      {
+                        "x":            0.74,
+                        "y":            0.62
+                    },
+                    "parameters": {
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "Play",
+                            "view":         "SessionSelect",
+                            "parameters": {
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "Session",
+                            "parameters": {
+                            }
+                        }
+
+                    ]
+                },
+                {
+                    "id":                   "Judge",
+                    "title":                "Judge!",
+                    "completable":          false,
+                    "icon":                 "ion-android-stopwatch",
+                    "iconColor":            "dark",
+                    "backgroundColor":      "white",
+                    "requiresCompletion":   [0],
+                    "isBonusLevel":         false,
+                    "coordinates": {
+                        "x":                0.34,
+                        "y":                0.35
+                    },
+                    "customView": "NonskippableLevel",
+                    "parameters": {
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "SessionJudge",
+                            "requiresPoints":       20
+                        }
+
+                    ]
+                }
+            ]
+        }
+    ]
+}

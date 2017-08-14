@@ -1,0 +1,342 @@
+{
+    "worlds": [
+        {
+            "title":        "Green World",
+            "id":           "GreenWorld",
+            "enabled":      true,
+            "background":   "map1.png",
+            "levels": [
+                {
+                    "id":                           "FirstLevel",
+                    "title":                        "Start!",
+                    "icon":                         "ion-social-tux",
+                    "iconColor":                    "dark",
+                    "backgroundColor":              "white",
+                    "isBonusLevel":                 false,
+                    "randomizesRangesOfRounds" :    [[3, 2]],
+                    "coordinates":      {
+                        "x":    0.33,
+                        "y":    0.87
+                    },
+                    "customView": "NonskippableLevel",
+                    	"parameters":{
+
+                        },
+
+                    "rounds": [
+                        {
+                            "id":           "r3",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "difficulty": 1
+                            }
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 1
+                            }
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 1
+                            }
+                        },
+                        {
+                            "id":			"r6",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 1
+                            }
+                        },
+                        {
+                            "id":			"r8",
+                            "view":			"ComposeFallacy",
+                            "parameters": {
+                                "difficulty": 1
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id":                           "SecondLevel",
+                    "title":                        "Easy!",
+                    "icon":                         "ion-arrow-graph-up-right",
+                    "iconColor":                    "dark",
+                    "backgroundColor":              "#2bc295",
+                    "requiresCompletion":           [0],
+                    "randomizesRangesOfRounds" :    [[1, 2]],
+                    "isBonusLevel":                 false,
+                    "coordinates":      {
+                        "x":    0.70,
+                        "y":    0.90
+                    },
+                    "parameters":{
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "difficulty": 2
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 2
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 2
+                            }
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 2
+                            }
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"ComposeFallacy",
+                            "parameters": {
+                                "difficulty": 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id":               "ThirdLevel",
+                    "title":			"Medium!",
+                    "icon":             "ion-arrow-graph-up-left",
+                    "iconColor":        "dark",
+                    "backgroundColor":  "yellow",
+                    "requiresCompletion":[0,1],
+                    "randomizesRangesOfRounds" : [[1, 2]],
+                    "isBonusLevel":     false,
+                    "coordinates":      {
+                        "x":            0.72,
+                        "y":            0.55
+                    },
+                    "parameters":{
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "difficulty": 3
+                            }
+                        },
+                        {
+                            "id":			"r2",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 3
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 3
+                            }
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition",
+                            "parameters": {
+                                "difficulty": 3
+                            }
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"ComposeFallacy",
+                            "parameters": {
+                                "difficulty": 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id":                   "FourthLevel",
+                    "title":                "Hard!",
+                    "icon":                 "ion-flame",
+                    "iconColor":            "dark",
+                    "backgroundColor":      "#FF4136",
+                    "requiresCompletion":   [0,1,2],
+                    "isBonusLevel":         false,
+                    "coordinates":      {
+                        "x":    0.55,
+                        "y":    0.15
+                    },
+                    "parameters":{
+
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "r1",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "FallacyRecognition"
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "FallacyInformation",
+                            "parameters": {
+                                "difficulty": 3
+                            }
+                        },
+                        {
+                            "id":			"r3",
+                            "view":			"FallacyRecognition"
+                        },
+                        {
+                            "id":			"r4",
+                            "view":			"FallacyRecognition"
+                        },
+                        {
+                            "id":			"r5",
+                            "view":			"FallacyRecognition"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title":            "Dark Lands",
+            "id":               "DarkLands",
+            "enabled":          true,
+            "background":       "map2.png",
+            "requiresLevelsInGreenWorld":       4,
+            "levels": [
+                {
+                    "id":                   "PvPIntro",
+                    "title":                "Intro!",
+                    "icon":                 "ion-information",
+                    "iconColor":            "dark",
+                    "backgroundColor":      "white",
+                    "isBonusLevel":         false,
+                    "coordinates":      {
+                        "x":    0.20,
+                        "y":    0.75
+                    },
+                    "customView":		"NonskippableLevel",
+                    "parameters":{
+
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "intro",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile": "PvPIntro"
+                            }
+                        },
+                        {
+                            "id":           "write",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPWrite"  
+                            }
+                        },
+                        {
+                            "id":           "indicate",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPIndicate"  
+                            }
+                        },
+                        {
+                            "id":           "result",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPResult"  
+                            }
+                        },
+                        {
+                            "id":           "judge",
+                            "view":         "StaticContent",
+                            "parameters": {
+                                "HTMLFile" : "PvPJudge"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id":                       "PvP",
+                    "title":                    "Play!",
+                    "completable":              false,
+                    "icon":                     "ion-ios-game-controller-a-outline",
+                    "iconColor":                "dark",
+                    "backgroundColor":          "white",
+                    "isBonusLevel":             false,
+                    "coordinates":      {
+                        "x":            0.50,
+                        "y":            0.75
+                    },
+                    "parameters": {
+                    },
+
+                    "rounds": [
+                        {
+                            "id":           "Play",
+                            "view":         "SessionSelect",
+				            "requiresPoints": 20,
+                            "parameters": {
+                            }
+                        },
+                        {
+                            "id":           "r2",
+                            "view":         "Session",
+                            "parameters": {
+                            }
+                        }
+
+                    ]
+                },
+                {
+                    "id":                   "Judge",
+                    "title":                "Judge!",
+                    "completable":          false,
+                    "icon":                 "ion-compass",
+                    "iconColor":            "dark",
+                    "backgroundColor":      "white",
+                    "isBonusLevel":         false,
+                    "coordinates":      {
+                        "x":    0.50,
+                        "y":    0.25
+                    },
+                    "customView":		"NonskippableLevel",
+                    "parameters":{
+
+                    },
+
+                    "rounds": [
+                        {
+                            "id":                               "r1",
+                            "view":                             "SessionJudge",
+                            "requiresLevelsInGreenWorld":       4
+                        }
+
+                    ]
+                }
+
+            ]
+        }
+    ]
+}

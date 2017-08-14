@@ -1,0 +1,10 @@
+__pycache__
+*.pyc
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# MACE temporary files
+competence
+prediction
