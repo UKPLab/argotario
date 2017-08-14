@@ -1,0 +1,37 @@
+= Code FAQ
+
+== Files
+
+=== Why is there a _bower.json_ and a _gruntfile_?
+Bower and Grunt have been used for development of the first version of the game, but now we use only Gulp.
+
+=== Why is there a _node_modules_ directory in the main directory and in the arguegame directory?
+The _node_modules_ directory in the main directory is actually not important.
+
+=== After pulling from git and deployment on a production server, the API calls go to *localhost* instead of the server. What's wrong?
+Delete the _.dev_ directory from _arguegame_ and edit the _config-web-prod.js_ so that `kBaseURL` is the server URL.
+
+
+== Server
+=== What kind of sessions are these in argserver.py?
+They are not used in the client-server communication using the API, but only for the CLI of the server that can be used to manually pass commands to the server, which is not an important feature.
+
+=== Where exactly are the API calls defined and implemented?
+They are implemented in the files of the directory _plugins_. The name of the API call is the same as the name of the file in which it is implemented.
+
+=== How is MACE integrated in Argotario?
+MACE is integrated in the server. There is a command "mace" which turns on this functionality (it's not turned on by default!). It starts a thread in which arguments are periodically (i.e. each 4 hours at the moment) checked if they are ready to be labeled (i.e. when at least 4 votes exist). What happens behind the scenes is that the arguments to label are collected, all the data necessary for MACE is written into a file, then MACE is called and writes the result into another file, and the server reads the results and writes them into the database.
+
+== Database
+=== What is the difference between the fields _fallacyId_ and _out_fallacyType_ in an argument document?
+The _fallacyId_ is the fallacy type that a user had to write during a Compose Fallacy round, whereas _out_fallacyType_ is a gold label and arguments with this field are used for the first levels of the Green World.
+
+== Front-End
+=== What is the difference between a _Controller_ and a _GameController_?
+Technically there is no difference because they are both implemented as standard controllers of angular.js
+
+=== Why do we use BaasBox and not standard $http to perform API calls?
+BaasBox was used for the first version of the app and then it was decided not to use it anymore. To reduce the number of lines of code to be changed, HTTP requests are still done in the BaasBox class.
+
+=== There are lots of unused parameters in the controllers and providers, why?
+This is probably due to refactoring the code, if a parameter is not used in the code, it can (and should) be deleted without any problems.

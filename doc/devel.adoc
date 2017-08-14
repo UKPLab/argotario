@@ -1,0 +1,867 @@
+= Argotario Developer's Documentation
+
+Intended to keep our documentation up to date.
+
+== Deployment
+
+How to deploy Argotario on Debian Jessie server (System: Debian 8.x (Jessie))
+Debian Image: debian-8.5.0-amd64-netinst.iso
+
+=== System prerequisities
+
+*  Install `sudo` if not available
+
+```
+apt-get install sudo
+usermod -aG sudo YOUR_CURRENT_USERNAME
+shutdown -r now
+```
+
+* Creating new user `argotario`
+
+```
+admin@ip-172-31-61-35:~$ sudo adduser argotario
+Adding user `argotario' ...
+Adding new group `argotario' (1001) ...
+Adding new user `argotario' (1001) with group `argotario' ...
+Creating home directory `/home/argotario' ...
+Copying files from `/etc/skel' ...
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
+Changing the user information for argotario
+Enter the new value, or press ENTER for the default
+	Full Name []:
+	Room Number []:
+	Work Phone []:
+	Home Phone []:
+	Other []:
+Is the information correct? [Y/n] y
+admin@ip-172-31-61-35:~$ ls /home/
+admin  argotario
+```
+
+* How to generate a random password?
+```
+$ pwgen -AnB
+........
+```
+
+* Install git
+
+```
+$ sudo apt-get install git
+```
+
+
+
+=== MongoDB
+
+```
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+$ echo "deb http://repo.mongodb.org/apt/debian  jessie/mongodb-org/3.2 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+$ sudo service mongod start
+```
+
+* Notes: Do NOT install this, as it is bound to the old 2.7 version of MongoDB
+** [.line-through]#`sudo apt-get install python3-pymongo`#
+
+==== Testing MongoDB
+
+```
+$ mongo
+MongoDB shell version: 3.2.10
+connecting to: test
+Welcome to the MongoDB shell.
+For interactive help, type "help".
+For more comprehensive documentation, see
+	http://docs.mongodb.org/
+Questions? Try the support group
+	http://groups.google.com/group/mongodb-user
+Server has startup warnings:
+2016-10-22T17:33:55.412+0000 I CONTROL  [initandlisten]
+2016-10-22T17:33:55.412+0000 I CONTROL  [initandlisten] ** WARNING: /sys/kernel/mm/transparent_hugepage/defrag is 'always'.
+2016-10-22T17:33:55.412+0000 I CONTROL  [initandlisten] **        We suggest setting it to 'never'
+2016-10-22T17:33:55.412+0000 I CONTROL  [initandlisten]
+>
+bye
+```
+
+How to get rid of the warning message?
+* Solution taken from https://docs.mongodb.com/master/tutorial/transparent-huge-pages/
+
+* Create the following file: `/etc/init.d/disable-transparent-hugepages`
+```
+$ sudo nano /etc/init.d/disable-transparent-hugepages
+```
+* Copy & paste this content:
+```
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          disable-transparent-hugepages
+# Required-Start:    $local_fs
+# Required-Stop:
+# X-Start-Before:    mongod mongodb-mms-automation-agent
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Disable Linux transparent huge pages
+# Description:       Disable Linux transparent huge pages, to improve
+#                    database performance.
+### END INIT INFO
+
+case $1 in
+  start)
+    if [ -d /sys/kernel/mm/transparent_hugepage ]; then
+      thp_path=/sys/kernel/mm/transparent_hugepage
+    elif [ -d /sys/kernel/mm/redhat_transparent_hugepage ]; then
+      thp_path=/sys/kernel/mm/redhat_transparent_hugepage
+    else
+      return 0
+    fi
+
+    echo 'never' > ${thp_path}/enabled
+    echo 'never' > ${thp_path}/defrag
+
+    re='^[0-1]+$'
+    if [[ $(cat ${thp_path}/khugepaged/defrag) =~ $re ]]
+    then
+      # RHEL 7
+      echo 0  > ${thp_path}/khugepaged/defrag
+    else
+      # RHEL 6
+      echo 'no' > ${thp_path}/khugepaged/defrag
+    fi
+
+    unset re
+    unset thp_path
+    ;;
+esac
+```
+* Make it executable
+```
+$ sudo chmod 755 /etc/init.d/disable-transparent-hugepages
+```
+* Configure your operating system to run it on boot
+```
+$ sudo update-rc.d disable-transparent-hugepages defaults
+```
+* Test Your Changes
+```
+$ cat /sys/kernel/mm/transparent_hugepage/enabled
+$ cat /sys/kernel/mm/transparent_hugepage/defrag
+always madvise [never]
+```
+* Reboot the server
+```
+sudo shutdown -r now
+```
+
+==== Starting MongoDB
+
+On Debian, the `mongodb` service has to be started manually, I couldn't find any meaningful explanation how to set it up as service (it's somehow non-standard)
+
+```
+$ sudo service mongod start
+```
+
+==== Configuring authentication in MongoDB
+
+* Add to `/etc/mongod.conf`
+```
+...
+security:
+   authorization: enabled
+...
+```
+* Restart
+```
+$ sudo service mongod restart
+```
+* and check the settings:
+```
+admin@ip-172-31-61-35:~$ sudo tail /var/log/mongodb/mongod.log | grep security
+2016-10-23T10:55:16.239+0000 I CONTROL  [initandlisten] options: { config: "/etc/mongod.conf", net: { bindIp: "127.0.0.1", port: 27017 }, security: { authorization: "enabled" }, storage: { dbPath: "/var/lib/mongodb", journal: { enabled: true } }, systemLog: { destination: "file", logAppend: true, path: "/var/log/mongodb/mongod.log", quiet: true } }
+```
+
+WARNING: TODO(check if this was the reason) Enabling security is extremely important step. If not enabled, the Python server will not be able to authorize the users or create new users!
+
+
+* Add a admin user
+** https://docs.mongodb.com/manual/reference/built-in-roles/#superuser-roles
+```
+argotario@ip-172-31-61-35:~$ mongo
+MongoDB shell version: 3.2.10
+connecting to: test
+> use admin
+switched to db admin
+> db.createUser({ user: "admin", pwd: "some_randomly_generated_safe_password", roles: ["root"]})
+Successfully added user: { "user" : "admin", "roles" : [ "root" ] }
+```
+
+* Testing admin connection
+```
+habernal@argue-dev:~$ mongo admin --username admin --password some_randomly_generated_safe_password
+MongoDB shell version: 3.2.11
+connecting to: admin
+> show users
+{
+	"_id" : "admin.admin",
+	"user" : "admin",
+	"db" : "admin",
+	"roles" : [
+		{
+			"role" : "root",
+			"db" : "admin"
+		}
+	]
+}
+>
+```
+
+==== Importing database content
+
+WARNING: Exporting DB on the production and importing on the dev does not work for some strange reasons.
+The only way to get the prod-db to the dev server is to:
+* stop the mongod service on prod server
+* copy /var/lib/mongod somewhere else (let's call it mongod-copy)
+* start the mongod on prod server again
+* copy the monbod-copy to /var/lib/mongod on the dev server
+* start mongod on the dev server
+
+==== Older working notes
+
+* Copy database dump from the production server (dumps are at /srv/mongodb-backups) to the dev server
+```
+habernal@argue-dev:~$ scp habernal@argue:/srv/mongodb-backups/mongodb-dump-2017-02-09.tar.bz2 .
+habernal@argue-dev:~$ tar -xvf mongodb-dump-2017-02-09.tar.bz2
+```
+
+* Restore database from the dump:
+```
+argotario@ip-172-31-61-35:~$ mongorestore -u admin -p some_randomly_generated_safe_password -h localhost --port 27017 mongodb-dump-2016-10-23/
+2016-10-23T12:29:32.720+0000	building a list of dbs and collections to restore from mongodb-dump-2016-10-23 dir
+2016-10-23T12:29:32.722+0000	reading metadata for dbtest.collectiontest1 from mongodb-dump-2016-10-23/dbtest/collectiontest1.metadata.json
+2016-10-23T12:29:32.736+0000	restoring dbtest.collectiontest1 from mongodb-dump-2016-10-23/dbtest/collectiontest1.bson
+2016-10-23T12:29:32.741+0000	restoring indexes for collection dbtest.collectiontest1 from metadata
+2016-10-23T12:29:32.741+0000	finished restoring dbtest.collectiontest1 (1 document)
+2016-10-23T12:29:32.741+0000	restoring users from mongodb-dump-2016-10-23/admin/system.users.bson
+2016-10-23T12:29:32.785+0000	done
+[...]
+2016-10-23T15:02:58.487+0000	Failed: restore error: error running merge command: Missing expected field "db"
+```
+
+So this looks like a real problem:
+2017-02-09T14:33:39.329+0100	Failed: restore error: error running merge command: Missing expected field "db"
+
+
+Dump only "argotario" database on the production server: (TODO: change the export script if this proves to work)
+```
+habernal@argue:/tmp$ mongodump -u admin -p some_randomly_generated_safe_password --authenticationDatabase=admin --db=argotario --dumpDbUsersAndRoles --out=/tmp/mongodump3
+```
+
+copy to dev server
+
+and restore only on dev server
+```
+habernal@argue-dev:~$ mongorestore -u admin -p some_randomly_generated_safe_password --authenticationDatabase admin --db argotario --restoreDbUsersAndRoles  mongodump3/argotario/
+```
+
+
+* Warning in the log file: `Could not insert user admin@admin in _mergeAuthzCollections command: DuplicateKey: User "admin@admin" already exists`
+can be ignored, the content is properly imported, all indexes are probably restored
+
+
+* Showing some imported content
+```
+habernal@argue-dev:~$ mongo admin --username admin --password some_randomly_generated_safe_password
+MongoDB shell version: 3.2.11
+connecting to: admin
+> show dbs
+admin      0.000GB
+argotario  0.002GB
+local      0.000GB
+test       0.000GB
+```
+
+* Show users
+```
+> show users
+{
+	"_id" : "admin.admin",
+	"user" : "admin",
+	"db" : "admin",
+	"roles" : [
+		{
+			"role" : "root",
+			"db" : "admin"
+		}
+	]
+}
+{
+	"_id" : "admin.admin",
+	"user" : "admin",
+	"db" : "admin",
+	"roles" : [
+		{
+			"role" : "root",
+			"db" : "admin"
+		}
+	]
+}
+{
+	"_id" : "admin.user_manager",
+	"user" : "user_manager",
+	"db" : "admin",
+	"roles" : [
+		{
+			"role" : "userAdmin",
+			"db" : "argotario"
+		}
+	]
+}
+{
+	"_id" : "admin.server",
+	"user" : "server",
+	"db" : "admin",
+	"roles" : [
+		{
+			"role" : "readWrite",
+			"db" : "argotario"
+		}
+	]
+}
+{
+	"_id" : "admin.anon",
+	"user" : "anon",
+	"db" : "admin",
+	"roles" : [
+		{
+			"role" : "read",
+			"db" : "argotario"
+		}
+	]
+}
+{
+	"_id" : "admin.default",
+	"user" : "default",
+	"db" : "admin",
+	"customData" : {
+
+	},
+	"roles" : [
+		{
+			"role" : "default",
+			"db" : "argotario"
+		}
+	]
+}
+```
+
+
+
+
+
+====  UI for Mongodb database - Robomongo
+
+* Download from https://robomongo.org/download
+* Run (locally! not on the server; it's a desktop app)
+* Make sure the server on AWS is running, you can SSH there, and connect to the database (mongo command above)
+* In Robomongo, create a new connection
+** In "SSH", enable SSH tunnel
+** SSH address: ec2-54-88-206-149.compute-1.amazonaws.com (remember: this will change after every restart of AWS server!)
+** SSH user name: ubuntu
+** SSH Auth Method: private key
+** Private key: the pem file (e.g., aws-keypair-us-east-1-2015-06-24.pem)
+* And connect to the database!
+
+
+
+
+
+== Apache web server
+
+* Install Apache
+
+```
+$ sudo apt-get install apache2
+```
+
+** If running on Amazon Web Services (AWS), enable port 80 and 443 for incoming traffic in Security Group
+
+* Add SSL support
+```
+admin@ip-172-31-61-35:~$ sudo a2enmod ssl
+```
+
+* Configure Apache for Virtual Hosting
+** Disable the default Apache virtual host
+```
+admin@ip-172-31-61-35:~$ sudo a2dissite 000-default.conf
+```
+** Enable default SSL
+```
+admin@ip-172-31-61-35:~$ sudo a2ensite default-ssl
+```
+** Reload
+```
+admin@ip-172-31-61-35:~$ sudo service apache2 reload
+```
+* And point your browser to:
+```
+https://ec2-54-205-135-3.compute-1.amazonaws.com/
+(or https://argue-dev.ukp.informatik.tu-darmstadt.de/)
+```
+It shows "Untrusted connection" as the default SSL certificate in Apache is self-signed. Accept this exception permanently in your browser.
+
+After that, you should see the Apache2 Debian Default Page (saying "It works!")
+
+* Add these two Apache modules
+```
+$ sudo a2enmod headers
+$ sudo a2enmod proxy
+$ sudo a2enmod proxy_http
+$ sudo service apache2 restart
+```
+and see the status
+```
+$ sudo service apache2 status
+● apache2.service - LSB: Apache2 web server
+   Loaded: loaded (/etc/init.d/apache2)
+  Drop-In: /lib/systemd/system/apache2.service.d
+           └─forking.conf
+   Active: active (running) since Sun 2016-10-30 10:16:12 UTC; 5s ago
+  Process: 31874 ExecStop=/etc/init.d/apache2 stop (code=exited, status=0/SUCCESS)
+  Process: 25576 ExecReload=/etc/init.d/apache2 reload (code=exited, status=0/SUCCESS)
+  Process: 31978 ExecStart=/etc/init.d/apache2 start (code=exited, status=0/SUCCESS)
+   CGroup: /system.slice/apache2.service
+           ├─31992 /usr/sbin/apache2 -k start
+           ├─31995 /usr/sbin/apache2 -k start
+           └─31996 /usr/sbin/apache2 -k start
+
+Oct 30 10:16:11 ip-172-31-61-35 systemd[1]: Starting LSB: Apache2 web server...
+Oct 30 10:16:12 ip-172-31-61-35 apache2[31978]: Starting web server: apache2.
+Oct 30 10:16:12 ip-172-31-61-35 systemd[1]: Started LSB: Apache2 web server.
+```
+
+We want to access the content directly from the home folder of user argotario, so update `/etc/apache2/apache2.conf` and add
+
+```
+<Directory /home/argotario/Argue/arguegame/www>
+        Options Indexes FollowSymLinks
+        AllowOverride None
+        Require all granted
+</Directory>
+```
+
+Create a new site configuration for argotario:
+
+```
+$ sudo cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/argotario.conf
+```
+
+Add this content (`sudo nano /etc/apache2/sites-available/argotario.conf`)
+
+```
+<IfModule mod_ssl.c>
+        <VirtualHost _default_:443>
+                ServerAdmin webmaster@localhost
+
+                DocumentRoot /home/argotario/Argue/arguegame/www
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+                SSLEngine on
+
+                #   A self-signed (snakeoil) certificate
+                SSLCertificateFile      /etc/ssl/certs/ssl-cert-snakeoil.pem
+                SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+
+                <FilesMatch "\.(cgi|shtml|phtml|php)$">
+                                SSLOptions +StdEnvVars
+                </FilesMatch>
+                <Directory /usr/lib/cgi-bin>
+                                SSLOptions +StdEnvVars
+                </Directory>
+
+                BrowserMatch "MSIE [2-6]" \
+                                nokeepalive ssl-unclean-shutdown \
+                                downgrade-1.0 force-response-1.0
+                # MSIE 7 and newer should be able to use keepalive
+                BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+
+
+                # Set up the proxy for /argueapi/v1
+                SSLProxyEngine on
+                RequestHeader set X-Forwarded-Proto "https"
+                ProxyPreserveHost On
+                ProxyPass /argueapi/v1 http://127.0.0.1:9000
+                ProxyPassReverse /argueapi/v1 http://127.0.0.1:9000
+
+        </VirtualHost>
+</IfModule>
+
+# vim: syntax=apache ts=4 sw=4 sts=4 sr noet
+```
+
+Enable the newly created site
+
+```
+$ sudo a2ensite argotario
+```
+
+which overwrites the default site `default-ssl`. Reload Apache and show all virtal hosts:
+
+```
+$ sudo service apache2 reload
+$ sudo apache2ctl -S
+VirtualHost configuration:
+*:443                  is a NameVirtualHost
+         default server argue-dev.ukp.informatik.tu-darmstadt.de (/etc/apache2/sites-enabled/argotario.conf:2)
+         port 443 namevhost argue-dev.ukp.informatik.tu-darmstadt.de (/etc/apache2/sites-enabled/argotario.conf:2)
+         port 443 namevhost argue-dev.ukp.informatik.tu-darmstadt.de (/etc/apache2/sites-enabled/default-ssl.conf:2)
+[...]
+```
+
+Point the browser to
+
+```
+https://ec2-54-205-135-3.compute-1.amazonaws.com/
+(or https://argue-dev.ukp.informatik.tu-darmstadt.de/)
+```
+
+and you should get the Welcome page of Argotario
+
+
+== Python 3 backend server
+
+* Check Python version, should be 3.4.2 on Jessie
+```
+admin@ip-172-31-61-35:~$ python3 --version
+Python 3.4.2
+```
+* Install PIP
+
+```
+$ sudo apt-get install python3-pip
+```
+
+* Install user-bound python libraries
+```
+$ sudo su
+$ su argotario
+
+$ pip3 install --user pymongo==3.3.0 bcrypt==3.1.0 numpy==1.11.2
+[...]
+Successfully installed pymongo bcrypt numpy cffi pycparser
+```
+
+=== Deploying the Python server
+
+* Assumptions
+** You installed the Debian server with all prerequsities
+** There's a user `argotario` on the server, under which the Python server will be running
+** The `argotario` user already installed the Python dependencies (See above "User-bound python libraries")
+
+==== Option 1: Installing git and cloning the project on the prod/dev server
+
+* Switch to `argotario` user
+```
+habernal@argue:~$ sudo su
+root@argue-dev:/home/habernal# su argotario
+```
+
+* Clone the project
+```
+argotario@argue-dev:~$ git clone gitRepo
+Cloning into 'Argue'...
+remote: Counting objects: 19985, done.
+remote: Compressing objects: 100% (13313/13313), done.
+remote: Total 19985 (delta 5381), reused 19847 (delta 5285)
+Receiving objects: 100% (19985/19985), 609.43 MiB | 22.47 MiB/s, done.
+Resolving deltas: 100% (5381/5381), done.
+Checking connectivity... done.
+```
+
+===== Option 1: Exporting from git on your local machine
+
+* Currently there are no branches (only master branch)
+* On your local machine, export the `argueserver` directory from gitlab (you must have git configured to access (push/pull/etc) to the repository! Try first by cloning the repo etc.)
+```
+user-ukp@DIPF-UKP-IH-NB1:/tmp$ git archive --format=zip --remote=ssh://git@git.ukp.informatik.tu-darmstadt.de/klamm/Argue master argueserver --output argueserver-git-export-$(date +"%Y-%m-%d-%H-%M").zip
+```
+* Copy the exported zip to your account at the =argue= server
+```
+user-ukp@DIPF-UKP-IH-NB1:/tmp$ scp argueserver-git-export-2016-08-18-15-16.zip habernal@argue.ukp.informatik.tu-darmstadt.de:./
+```
+* Login to the `argue` server and move the uploaded zip under the `argotario` user home
+```
+user-ukp@DIPF-UKP-IH-NB1:~$ ssh habernal@argue.ukp.informatik.tu-darmstadt.de
+habernal@argue:~$ sudo chown argotario:argotario argueserver-git-export-2016-08-18-15-16.zip && sudo mv argueserver-git-export-2016-08-18-15-16.zip /home/argotario/
+```
+
+=== Starting/Stopping the Python server
+
+* Switch to `argotario` user
+```
+habernal@argue:~$ sudo su
+root@argue:/home/habernal# su argotario
+```
+* Stop the argotario server daemon
+** Currently the server should run under `argotario` user in `screen`; switch to argotario user, `screen -r` and stop the server by `Ctrl+C`
+```
+argotario@argue:~$ screen -r
+Cannot open your terminal '/dev/pts/1' - please check.
+```
+You need to run `script /dev/null` first in this case
+```
+argotario@argue:~$ script /dev/null
+Script started, file is /dev/null
+```
+
+* If exported (Option 2), unpack the files
+    * Delete the current version of server (make sure it's not running! See above with stopping the server under screen)
+```
+argotario@argue:~$ rm -rf argueserver
+```
+    * Unzip the new version of the server
+```
+argotario@argue:~$ unzip argueserver-git-export-2016-08-18-15-16.zip
+```
+
+* And run it again under `screen`
+```
+argotario@argue:~$ screen
+argotario@argue:~$ cd argueserver/
+argotario@argue:~$ python3 startServer.py
+```
+* Checking whether the server is running
+```
+habernal@argue:~$ ps auxf | grep argotar
+...
+argotar+ 31106  0.0  0.1  43960  3364 ?        Ss   Aug18   0:00 SCREEN
+argotar+ 31107  0.0  0.3  41288  6700 pts/3    Ss   Aug18   0:00  \_ /bin/bash
+argotar+ 29772  0.3  3.3 917760 68772 pts/3    Sl+  09:51   0:01      \_ python3 startServer.py
+```
+* Checking whether the server listens on the 9000 port (under root)
+```
+root@argue-dev:/home/habernal# netstat -vatn | grep 9000
+tcp        0      0 127.0.0.1:9000          0.0.0.0:*               LISTEN
+```
+
+== Frontend setup
+
+``Argue/arguegame/www/index.html`` is the "homepage" of the game
+
+* There are currently three config files included:
+
+```
+config-device-prod.js
+../config-web-prod.js
+./.dev/config-web-dev.js
+```
+
+* If the first one (config-device-prod.js) is disabled, the game doesn't load at all
+* The second one (../config-web-prod.js) doesn't seem to have any effect at all
+* The last one (./.dev/config-web-dev.js) overrides the values from the first one
+
+* By examining the production server, it is apparent that only the first one (config-device-prod.js) is used, as the other two cannot be accessed (404 not found).
+
+* When redeploying the production server, one has to delete the ".dev" directory in order not to perform API calls to localhost.
+
+* Change the configuration in config-devide-prod.js:
+```
+kBaseURL = 'https://argue-dev.ukp.informatik.tu-darmstadt.de';
+kBaasBoxURL = kBaseURL+'/argueapi/v1'
+```
+
+* the '/argueapi/v1' address corresponds to the proxy in Apache, which is forwarded to the Python server on localhost (as shown in the Apache configuration above):
+```
+# Set up the proxy for /argueapi/v1
+SSLProxyEngine on
+RequestHeader set X-Forwarded-Proto "https"
+ProxyPreserveHost On
+ProxyPass /argueapi/v1 http://127.0.0.1:9000
+ProxyPassReverse /argueapi/v1 http://127.0.0.1:9000
+```
+
+
+== User interface
+
+=== How to enable secured connection in Chrome on Android?
+
+* By default, Android Chrome doesn't recognize SSL certificate issued by TU Darmstadt by default
+* Users need to manually install the TU Certificate from here: https://info.pca.dfn.de/tu-darmstadt-ca/index.html
+** Download "CA-Zertifikat" in "DER-Format" (http://cdp.pca.dfn.de/tu-darmstadt-ca/pub/cacert/cacert.der) in your Android browser
+** Open the downloaded file and install it under a name of your choice (for example "TUD CA G01")
+** Android might give you warning of being insecure because of the new certificate installed, but you can ignore the message
+*** For more information about the SSL certificate of TU Darmstadt, visit https://www.hrz.tu-darmstadt.de/itsicherheit/pki/pki_tudcag01/index.de.jsp
+**** The root certificate is signed by "Deutsche Telekom Root CA 2", then by "DFN-Verein" (Deutsches Forschungsnetz), then by "TU Darmstadt"
+**** Majority of browsers do recognize these certification authorities by default, but some not yet, that's the reason
+
+== Argotario website
+* Argotario website = simple landing page that will be displayed at argotario.net
+* In Git under https://git.ukp.informatik.tu-darmstadt.de/klamm/Argue/tree/master/argotario-web
+
+* Prerequisities: PHP on the Apache server
+```
+habernal@argue:~$ sudo apt-get install libapache2-mod-php5
+```
+
+* Make sure you have up-to-date version (git pull)
+* Copy the www folder to argue server
+```
+user-ukp@DIPF-UKP-IH-NB1:~/IdeaProjects/argotario/argotario-web$ rsync -avr www/ habernal@argue:www
+```
+* Login to argue server, change the owner and copy the content to `/var/www/html`
+```
+habernal@argue:~$ sudo chown argotario:www-data --recursive www/
+habernal@argue:~$ sudo cp --recursive www/* /var/www/html/
+```
+
+
+== JavaScript development [working notes]
+
+=== npm
+
+Prerequisites: `npm`, package manager for JavaScript (also install `nodejs-legacy` due to some
+link:https://github.com/nodejs/node-v0.x-archive/issues/3911[weird naming conventions etc.]
+
+```
+$ sudo apt-get install npm nodejs-legacy
+```
+
+installs `npm` version `3.5.2-0ubuntu4` (on Ubuntu 16.04). This will also install plenty of JS
+libraries to `/usr/lib/nodejs`.
+
+Change the npm  global directory to a new local directory to prevent messing up with sudo rights
+etc. (Option 2 as shown link:https://docs.npmjs.com/getting-started/fixing-npm-permissions:[in the documentation]):
+
+```
+$ mkdir ~/.npm-global
+$ npm config set prefix '~/.npm-global'
+```
+
+add this line to `~/.bashrc`: `export PATH=~/.npm-global/bin:$PATH`
+
+and update the system variables
+
+```
+$ source .bashrc
+```
+
+Check whether this was successful:
+
+```
+$ npm config get prefix
+/home/user-ukp/.npm-global
+```
+
+=== Local JS libraries
+
+Change dir to `argotario/arguegame` and run
+
+```
+$ npm install
+```
+
+This will create a new directory `node_modules` and download all libraries.
+DO NOT add this directory to Git!
+
+
+=== Building
+
+Some notes; work in progress
+
+```
+user-ukp@DIPF-UKP-IH-NB1:~/IdeaProjects/argotario/arguegame$ ionic serve
+WARN: ionic.project has been renamed to ionic.config.json, please rename it.
+
+There is an error in your gulpfile:
+Error: Missing binding /home/user-ukp/IdeaProjects/argotario/arguegame/node_modules/node-sass/vendor/linux-x64-46/binding.node
+Node Sass could not find a binding for your current environment: Linux 64-bit with Node.js 4.x
+
+Found bindings for the following environments:
+  - OS X 64-bit with Node 0.12.x
+
+This usually happens because your environment has changed since running `npm install`.
+Run `npm rebuild node-sass` to build the binding for your current environment.
+    at Object.<anonymous> (/home/user-ukp/IdeaProjects/argotario/arguegame/node_modules/node-sass/lib/index.js:14:11)
+    at Module._compile (module.js:410:26)
+    at Object.Module._extensions..js (module.js:417:10)
+    at Module.load (module.js:344:32)
+    at Function.Module._load (module.js:301:12)
+    at Module.require (module.js:354:17)
+    at require (internal/module.js:12:17)
+    at Object.<anonymous> (/home/user-ukp/IdeaProjects/argotario/arguegame/node_modules/gulp-sass/index.js:187:21)
+    at Module._compile (module.js:410:26)
+    at Object.Module._extensions..js (module.js:417:10)
+
+user-ukp@DIPF-UKP-IH-NB1:~/IdeaProjects/argotario/arguegame$ npm rebuild node-saas
+
+```
+
+```
+user-ukp@DIPF-UKP-IH-NB1:~/IdeaProjects/argotario/arguegame$ gulp
+[13:29:02] Using gulpfile ~/IdeaProjects/argotario/arguegame/gulpfile.js
+[13:29:02] Starting 'concatAppJs'...
+[13:29:02] Starting 'concatVendorJs'...
+[13:29:02] Finished 'concatVendorJs' after 44 ms
+[13:29:02] Finished 'concatAppJs' after 72 ms
+[13:29:02] Starting 'default'...
+[13:29:02] Finished 'default' after 16 μs
+```
+
+== Development Documentation
+
+=== GameConfiguration
+Connfiguring the game, its worlds and levels, via a JSON file. This file is called gameConfiguration.js and is placed in the 'gamecontent' top-level folder, where all game related contents reside. The game contents are completely separated from the core files, to allow treating the core itself as a black-box when someone decides to extend the game with new levels or rounds.
+
+=== Countdown
+Continued working on the countdowns. The argCountdown directive now has additional attributes, such as auto-start, controller, and more. Pass any object (e.g., {}) of the current shope as the countdown's controller attribute. This object then will be extended in the directive linking code with methods that let you then control the countdown from your normal controller: start() resets the controller and starts counting down (after the defer phase). reset() only resets the progress back to 100%.
+
+=== App.js
+To improve the app (loading) performance, Raffael made use of file concatination and minimization via gulp and cordova.  All app-related files (which are not shared with any other project, e.g., argueadmin) bundelling into one file called bin/App.js. Except all vendor files, e.g., jQuery and the BaasBox JS SDK, which are all bundled into one file, caleld bin/Vendor.js. Shared code is bundled into bin/Shared.js, which is now included by the argueadmin, via "../../" links to reference the 'arguegame', instead of using any symlinks.
+
+=== Folder Structure (see Overview.png in the doc-Folder)
+
+./arguegame/
+This folder is the project of the front-end of the game. Actually, only the subfolder /www should be deployed to the server, since the rest of the root directory of this project only contains development and cordova related files.
+
+./arguegame/bower.josn
+Bower can manage components that contain HTML, CSS, JavaScript, fonts or even image files
+
+./arguegame/config-web-prod.js
+Specify the Base URL
+
+./arguegame/config.xml
+
+./arguegame/Gruntfile.js
+
+./arguegame/gulpfile.js
+Gulp is for automate tasks - workflow to automate the compilation of SASS files (scss) using gulp
+
+./arguegame/ionic.project
+Ionic
+
+./arguegame/www/index.html
+
+./arguegame/www/GameContent
+
+./arguegame/www/GameContent/localGameConfiguration.json
+Backup, wenn die auf dem Server nicht gelesen werden kann
+
+./arguegame/www/GameContent/Rounds
+
+./arguegame/www/GameContent/Rounds/ComposeArgument
+./arguegame/www/GameContent/Rounds/ComposeFallacy
+./arguegame/www/GameContent/Rounds/FallacyInformation
+./arguegame/www/GameContent/Rounds/FallacyRecognition
+./arguegame/www/GameContent/Rounds/PickTheComponent
+./arguegame/www/GameContent/Rounds/Session
+./arguegame/www/GameContent/Rounds/SessionJudge
+./arguegame/www/GameContent/Rounds/StanceRecognition
+./arguegame/www/GameContent/Rounds/SessionJudge
+./arguegame/www/GameContent/Rounds/StaticConent
