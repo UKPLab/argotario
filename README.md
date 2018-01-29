@@ -51,7 +51,7 @@ The German data are available under the [Creative Commons Zero (CC0)](https://cr
 
 The tab-separated text file is located under ``data/arguments-de-2018-01-15.tsv``.
 
-Please cite our LREC'18 paper (see below) if you use the English corpus for any work.
+Please cite our LREC'18 paper (see below) if you use the German corpus for any work.
 
 ```
 @inproceedings{Habernal.et.al.2018.LREC,
