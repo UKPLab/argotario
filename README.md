@@ -2,7 +2,7 @@
 
 **Argotario** is a serious game that deals with fallacies in everyday argumentation. **Argotario** is a multilingual, open-source, platform-independent application with strong educational aspects, accessible at www.argotario.net.
 
-The paper pre-print is available in the [ACL Anthology](http://www.aclweb.org/anthology/D17-2002). Please use the following citation:
+The paper is available in the [ACL Anthology](http://www.aclweb.org/anthology/D17-2002). Please use the following citation:
 
 ```
 @InProceedings{Habernal.et.al.2017.EMNLP,
@@ -32,3 +32,38 @@ Don't hesitate to send us an e-mail or report an issue, if something is broken (
 
 
 Developer documentation is available in [doc/devel.adoc](./doc/devel.adoc) and [doc/faq.adoc](./doc/faq.adoc).
+
+## English data
+
+![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
+
+The English data are available under the [Creative Commons Zero (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) license. The data are anonymous, user names were hashed before publishing.
+
+The tab-separated text file is located under ``data/arguments-en-2018-01-15.tsv``.
+
+Please cite our EMNLP'17 paper (see above) if you use the English corpus for any work. 
+
+## German data
+
+![CC0](http://i.creativecommons.org/p/zero/1.0/88x31.png)
+
+The German data are available under the [Creative Commons Zero (CC0)](https://creativecommons.org/publicdomain/zero/1.0/) license. The data are anonymous, user names were hashed before publishing.
+
+The tab-separated text file is located under ``data/arguments-de-2018-01-15.tsv``.
+
+Please cite our LREC'18 paper (see below) if you use the English corpus for any work.
+
+```
+@inproceedings{Habernal.et.al.2018.LREC,
+    title     = {{Adapting Serious Game for Fallacious Argumentation to German:
+	              Pitfalls, Insights, and Best Practices}},
+    author    = {Habernal, Ivan and Pauli, Patrick and Gurevych, Iryna},
+    booktitle = {Proceedings of the Eleventh International Conference on Language Resources
+                 and Evaluation (LREC 2018)},
+    pages     = {in press},
+    month     = {May},
+    year      = {2018},
+    address   = {Miyazaki, Japan},
+    publisher = {European Language Resources Association (ELRA)},
+}
+```
