@@ -1,6 +1,6 @@
 # Argotario
 
-**Argotario** is a serious game that deals with fallacies in everyday argumentation. **Argotario** is a multilingual, open-source, platform-independent application with strong educational aspects, accessible at www.argotario.net.
+**Argotario** is a serious game that deals with fallacies in everyday argumentation. **Argotario** is a multilingual, open-source, platform-independent application with strong educational aspects, accessible at *link removed due to domain expiration* (archived project).
 
 The paper is available in the [ACL Anthology](http://www.aclweb.org/anthology/D17-2002). Please use the following citation:
 
